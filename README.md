@@ -1,2 +1,2 @@
 # SafeCross
-Open source windows/linux application for predictive modelling of unsuccessful crossings on tram tracks 
+Open source Wndows/Linux application for predictive modelling of unsuccessful crossings on tram tracks 
