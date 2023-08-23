@@ -2,8 +2,7 @@ GUI for annotating and tracking bicycles crossing tram tracks.
 
 To create a standalone app: pyinstaller --onefile annotateimage.py
 
-Built app: <https://drive.google.com/file/d/1sNqW4D8gRolIi4EgPBPlplcI2O_4Rxvw/view?usp=sharing> 
-
+Built app: <https://drive.google.com/file/d/1719KP7tC3FFyZVPaJoTW6_J4fPEpFFcV/view?usp=sharing>
 Example video: <https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQqn/view?usp=sharing>
 
 
