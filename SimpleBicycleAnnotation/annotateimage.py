@@ -4,6 +4,8 @@ import cv2
 from PIL import Image, ImageTk
 import numpy as np
 import pandas as pd
+import math
+from matplotlib import pyplot as plt
 
 class VideoAnnotator:
     def __init__(self, root):
@@ -43,6 +45,12 @@ class VideoAnnotator:
         help_menu.add_command(label="About", command=self.show_about)
         menubar.add_cascade(label="Help", menu=help_menu)
 
+        # Calculate menu
+        # calculatemenu = Menu(menubar, tearoff=0)
+        # calculatemenu.add_command(label="Calculate Crossing Angles", command=self.calculate_crossing_angles)
+        # calculatemenu.add_command(label="Load and plot data", command=self.load_and_plot_data)
+        # menubar.add_cascade(label="Calculate", menu=calculatemenu)
+
         root.config(menu=menubar)
         
         # Keyboard shortcuts
@@ -80,6 +88,8 @@ class VideoAnnotator:
         self.tram_id = 1  # Starting ID for tram tracks
         
         self.calibration_params = {}
+
+
 
     def load_tacal_file(self):
         tacal_path = filedialog.askopenfilename(filetypes=[("TACAL files", "*.tacal")])
@@ -234,9 +244,12 @@ class VideoAnnotator:
         if self.current_time in self.tram_tracks:
             tram_points = sorted(self.tram_tracks[self.current_time], key=lambda x: x[0])
             for i in range(len(tram_points) - 1):
-                _, x1, y1 = tram_points[i]
-                _, x2, y2 = tram_points[i + 1]
-                self.canvas.create_line(x1, y1, x2, y2, fill='green')
+                tid1, x1, y1 = tram_points[i]
+                tid2, x2, y2 = tram_points[i + 1]
+                
+                # Only draw a line if the two points belong to the same track ID
+                if tid1 == tid2:
+                    self.canvas.create_line(x1, y1, x2, y2, fill='green')
 
 
         # Plot the origin of the world coordinate system
@@ -333,6 +346,7 @@ class VideoAnnotator:
             self.show_frame()
 
 
+
     def save_annotations(self):
         # For bicycles
         bicycle_data = []
@@ -355,7 +369,39 @@ class VideoAnnotator:
         tram_df = pd.DataFrame(tram_data, columns=["Type", "Time", "X", "Y", "TramTrackID", "WorldX", "WorldY"])
         tram_df.to_excel("tram_tracks.xlsx", index=False)
 
-        messagebox.showinfo("Info", "Annotations with world coordinates saved successfully!")
+
+        # Plotting world coordinates
+        plt.figure(figsize=(10, 6))
+
+        # Plot tram tracks as green lines connecting the points
+        unique_track_ids = tram_df["TramTrackID"].unique()
+        for track_id in unique_track_ids:
+            track_data = tram_df[tram_df["TramTrackID"] == track_id]
+            plt.plot(track_data["WorldX"], track_data["WorldY"], color='green', marker='o', linestyle='-')
+            for i, row in track_data.iterrows():
+                plt.text(row["WorldX"], row["WorldY"], str(row["TramTrackID"]), fontsize=9, ha='right')
+
+        # Plot bicycle front wheel position as blue and rear wheel position as red
+        front_wheel_df = bicycle_df[bicycle_df["WheelType"] == "front"]
+        rear_wheel_df = bicycle_df[bicycle_df["WheelType"] == "rear"]
+
+        plt.scatter(front_wheel_df["WorldX"], front_wheel_df["WorldY"], c='blue', label='Bicycle Front Wheel', marker='o')
+        plt.scatter(rear_wheel_df["WorldX"], rear_wheel_df["WorldY"], c='red', label='Bicycle Rear Wheel', marker='o')
+
+        # Annotate with bicycle IDs
+        for i, row in front_wheel_df.iterrows():
+            plt.text(row["WorldX"], row["WorldY"], str(row["BicycleID"]), fontsize=9, ha='right', color='blue')
+        for i, row in rear_wheel_df.iterrows():
+            plt.text(row["WorldX"], row["WorldY"], str(row["BicycleID"]), fontsize=9, ha='right', color='red')
+
+        plt.xlabel('World X')
+        plt.ylabel('World Y')
+        plt.title('World Coordinates of Bicycles and Tram Tracks')
+        plt.legend()
+        plt.grid(True)
+        plt.show()
+
+        messagebox.showinfo("Info", "Annotations with world coordinates saved and plotted successfully!")
 
     def show_controls(self):
         controls = """
@@ -383,6 +429,7 @@ class VideoAnnotator:
 
         label = tk.Label(about_window, text=info, font=("Arial", 8))
         label.pack(pady=15)
+
 
 root = tk.Tk()
 app = VideoAnnotator(root)
