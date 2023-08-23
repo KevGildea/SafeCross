@@ -15,13 +15,14 @@ _Short term:_
 3. annotate tracks ✔
 4. read .tcal file and calculate pixel-to-world coordinates ✔
 5. plot global coordinate system at the origin using world-to-pixel transformation ✔
-6. filter bicycle tracks (fixed distance between points)
-7. automatically calculate crossing angles
-8. display 3D plot
-9. calculate N_UC
-10. plot a heat map of riskiest areas
-11. output image of heatmap
-12. make How-to video demonstrating functionality and features
+6. output as xlsx ✔
+7. filter bicycle tracks (fixed distance between points)
+8. automatically calculate crossing angles
+9. display 3D plot
+10. calculate N_UC
+11. plot a heat map of riskiest areas
+12. output image of heatmap
+13. make How-to video demonstrating functionality and features
 
 
 _Long term:_
