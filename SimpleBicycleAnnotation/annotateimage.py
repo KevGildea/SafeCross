@@ -139,6 +139,30 @@ class VideoAnnotator:
         return world_coords[0], world_coords[1]
 
 
+    def world_to_pixel(self, world_x, world_y, world_z=0.0):
+        """Convert world coordinates to pixel coordinates."""
+        # Construct the intrinsic matrix from self.calibration_params
+        int_mat = np.array([
+            [self.calibration_params['f'], 0, self.calibration_params['Cx']],
+            [0, self.calibration_params['f'], self.calibration_params['Cy']],
+            [0, 0, 1]
+        ])
+
+        # Construct the extrinsic matrix from self.calibration_params
+        ext_mat = np.array([
+            [self.calibration_params['r1'], self.calibration_params['r2'], self.calibration_params['r3'], self.calibration_params['Tx']],
+            [self.calibration_params['r4'], self.calibration_params['r5'], self.calibration_params['r6'], self.calibration_params['Ty']],
+            [self.calibration_params['r7'], self.calibration_params['r8'], self.calibration_params['r9'], self.calibration_params['Tz']]
+        ])
+
+        world_point = np.array([[world_x], [world_y], [world_z], [1]])
+        image_point = int_mat @ ext_mat @ world_point
+        image_point /= image_point[2]  # Homogeneous to cartesian coordinates
+
+        return int(image_point[0]), int(image_point[1])
+
+
+
     def set_bicycle_mode(self):
         self.mode = "Bicycle"
         self.show_frame()
@@ -215,6 +239,20 @@ class VideoAnnotator:
                 _, x2, y2 = tram_points[i + 1]
                 self.canvas.create_line(x1, y1, x2, y2, fill='green')
 
+
+        # Plot the origin of the world coordinate system
+        origin_x, origin_y = self.world_to_pixel(0, 0)
+        self.canvas.create_oval(origin_x-5, origin_y-5, origin_x+5, origin_y+5, fill='white')
+        self.canvas.create_text(origin_x, origin_y-10, text="Origin", fill='white')
+
+        # Plot X, Y, Z axes
+        x_end_x, x_end_y = self.world_to_pixel(1, 0)
+        y_end_x, y_end_y = self.world_to_pixel(0, 1)
+        z_end_x, z_end_y = self.world_to_pixel(0, 0, 1)
+
+        self.canvas.create_line(origin_x, origin_y, x_end_x, x_end_y, fill='red', arrow=tk.LAST)  # X-axis in red
+        self.canvas.create_line(origin_x, origin_y, y_end_x, y_end_y, fill='green', arrow=tk.LAST)  # Y-axis in green
+        self.canvas.create_line(origin_x, origin_y, z_end_x, z_end_y, fill='blue', arrow=tk.LAST)  # Z-axis in blue
 
 
         # Update the label with frame number and time
