@@ -8,6 +8,8 @@ Example video: <https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQq
 
 
 **To do:**
+
+_Shortterm:_
 1. annotate bicycle front and rear wheels while tracking IDs accross frames ✔
 2. annotate tracks ✔
 3. read .tcal file
@@ -17,3 +19,7 @@ Example video: <https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQq
 7. calculate N_UC
 8. plot a heat map of riskiest areas
 9. output image of heatmap
+
+
+_Longterm:_
+1. incorporate automatic tracking
