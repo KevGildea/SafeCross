@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, simpledialog, Menu
 import cv2
 from PIL import Image, ImageTk
+import numpy as np
 
 class VideoAnnotator:
     def __init__(self, root):
@@ -14,6 +15,8 @@ class VideoAnnotator:
         # File menu
         filemenu = Menu(menubar, tearoff=0)
         filemenu.add_command(label="Load Video", command=self.load_video, accelerator="Ctrl+L")
+        filemenu.add_command(label="Load TACAL File", command=self.load_tacal_file, accelerator="Ctrl+T")
+        root.bind("<Control-t>", lambda event: self.load_tacal_file())
         filemenu.add_command(label="Save Annotations", command=self.save_annotations, accelerator="Ctrl+S")
         filemenu.add_separator()
         filemenu.add_command(label="Exit", command=root.quit)
@@ -74,6 +77,67 @@ class VideoAnnotator:
 
         self.tram_tracks = {}  # Dictionary to store tram tracks with frame number as key and list of coordinates as value
         self.tram_id = 1  # Starting ID for tram tracks
+        
+        self.calibration_params = {}
+
+    def load_tacal_file(self):
+        tacal_path = filedialog.askopenfilename(filetypes=[("TACAL files", "*.tacal")])
+        if not tacal_path:
+            return
+
+        with open(tacal_path, 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                key, value = line.strip().split(":")
+                self.calibration_params[key.strip()] = float(value.strip())
+        print(self.calibration_params)
+        
+
+    def groundProjectPoint(self, image_point, int_mat, ext_mat, z=0.0):
+        camMat = np.array(int_mat)
+        rotMat = np.array([
+            [ext_mat[0][0], ext_mat[0][1], ext_mat[0][2]], 
+            [ext_mat[1][0], ext_mat[1][1], ext_mat[1][2]],
+            [ext_mat[2][0], ext_mat[2][1], ext_mat[2][2]]
+        ])
+
+        iRot = np.linalg.inv(rotMat)
+        iCam = np.linalg.inv(camMat)
+        tvec = [[ext_mat[0][3]], [ext_mat[1][3]], [ext_mat[2][3]]]
+
+        uvPoint = np.ones((3, 1))
+        uvPoint[0, 0] = image_point[0]
+        uvPoint[1, 0] = image_point[1]
+
+        tempMat = iRot @ iCam @ uvPoint
+        tempMat2 = iRot @ tvec
+
+        s = (z + tempMat2[2, 0]) / tempMat[2, 0]
+        wcPoint = iRot @ ((s * iCam @ uvPoint) - tvec)
+
+        assert int(abs(wcPoint[2] - z) * (10 ** 8)) == 0
+        wcPoint[2] = z
+
+        return wcPoint
+
+    def pixel_to_world(self, x, y):
+        # Construct the intrinsic matrix from self.calibration_params
+        int_mat = [
+            [self.calibration_params['f'], 0, self.calibration_params['Cx']],
+            [0, self.calibration_params['f'], self.calibration_params['Cy']],
+            [0, 0, 1]
+        ]
+
+        # Construct the extrinsic matrix from self.calibration_params
+        ext_mat = [
+            [self.calibration_params['r1'], self.calibration_params['r2'], self.calibration_params['r3'], self.calibration_params['Tx']],
+            [self.calibration_params['r4'], self.calibration_params['r5'], self.calibration_params['r6'], self.calibration_params['Ty']],
+            [self.calibration_params['r7'], self.calibration_params['r8'], self.calibration_params['r9'], self.calibration_params['Tz']]
+        ]
+
+        world_coords = self.groundProjectPoint((x, y), int_mat, ext_mat)
+        return world_coords[0], world_coords[1]
+
 
     def set_bicycle_mode(self):
         self.mode = "Bicycle"
@@ -108,16 +172,51 @@ class VideoAnnotator:
         if self.current_time in self.annotations:
             for coord, bid, wheel_type in self.annotations[self.current_time]:
                 x, y = coord
-                color = 'blue' if wheel_type == 'front' else 'red'
+                if wheel_type == 'front':
+                    color = 'blue'
+                elif wheel_type == 'rear':
+                    color = 'red'
+                elif wheel_type == 'center':
+                    color = 'yellow'
                 self.canvas.create_oval(x-5, y-5, x+5, y+5, fill=color)
                 self.canvas.create_text(x, y-10, text=str(bid), fill='white')
-            
+
+
+        # Draw lines for bicycles
+        if self.current_time in self.annotations:
+            bicycle_points = {}
+            for coord, bid, wheel_type in self.annotations[self.current_time]:
+                if bid not in bicycle_points:
+                    bicycle_points[bid] = {}
+                bicycle_points[bid][wheel_type] = coord
+
+            for bid, points in bicycle_points.items():
+                if 'front' in points and 'rear' in points:
+                    self.canvas.create_line(points['front'], points['rear'], fill='purple')
+                if 'center' in points:
+                    if 'front' in points:
+                        self.canvas.create_line(points['center'], points['front'], fill='purple')
+                    if 'rear' in points:
+                        self.canvas.create_line(points['center'], points['rear'], fill='purple')
+
+
         # Display tram track annotations
         if self.current_time in self.tram_tracks:
             for tid, x, y in self.tram_tracks[self.current_time]:
                 self.canvas.create_oval(x-3, y-3, x+3, y+3, fill='green')
                 self.canvas.create_text(x, y-10, text=str(tid), fill='white')
-            
+
+
+        # Draw lines for tram tracks
+        if self.current_time in self.tram_tracks:
+            tram_points = sorted(self.tram_tracks[self.current_time], key=lambda x: x[0])
+            for i in range(len(tram_points) - 1):
+                _, x1, y1 = tram_points[i]
+                _, x2, y2 = tram_points[i + 1]
+                self.canvas.create_line(x1, y1, x2, y2, fill='green')
+
+
+
         # Update the label with frame number and time
         self.label.config(text=f"Frame: {self.current_time}, Time: {self.current_time} seconds, Mode: {self.mode}")
 
@@ -128,18 +227,20 @@ class VideoAnnotator:
             bid = simpledialog.askinteger("Input", "Enter Bicycle ID:")
             if bid is None:
                 return
-            wheel_type = simpledialog.askstring("Input", "Enter Wheel Type (f for front/r for rear):")
+            wheel_type = simpledialog.askstring("Input", "Enter Wheel Type (f for front/r for rear/c for center):")
             if wheel_type == 'f':
                 wheel_type = 'front'
             elif wheel_type == 'r':
                 wheel_type = 'rear'
-            if wheel_type not in ['front', 'rear']:
-                messagebox.showerror("Error", "Invalid wheel type. Please enter 'f' for front or 'r' for rear.")
+            elif wheel_type == 'c':
+                wheel_type = 'center'
+            if wheel_type not in ['front', 'rear', 'center']:
+                messagebox.showerror("Error", "Invalid wheel type. Please enter 'f' for front, 'r' for rear, or 'c' for center.")
                 return
             if self.current_time not in self.annotations:
                 self.annotations[self.current_time] = []
             self.annotations[self.current_time].append(((x, y), bid, wheel_type))
-            color = 'blue' if wheel_type == 'front' else 'red'
+            color = 'blue' if wheel_type == 'front' else ('red' if wheel_type == 'rear' else 'yellow')
             self.canvas.create_oval(x-5, y-5, x+5, y+5, fill=color)
             self.canvas.create_text(x, y-10, text=str(bid), fill='white')
         elif self.mode == "Tram Track":
@@ -197,20 +298,22 @@ class VideoAnnotator:
     def save_annotations(self):
         with open("annotations.txt", "w") as f:
             # Write column titles for bicycles
-            f.write("Type,Time,X,Y,BicycleID,WheelType\n")
+            f.write("Type,Time,X,Y,BicycleID,WheelType,WorldX,WorldY\n")
             for time, annotations in self.annotations.items():
                 for coord, bid, wheel_type in annotations:
                     x, y = coord
-                    f.write(f"Bicycle,{time},{x},{y},{bid},{wheel_type}\n")
+                    world_x, world_y = self.pixel_to_world(x, y)
+                    f.write(f"Bicycle,{time},{x},{y},{bid},{wheel_type},{world_x},{world_y}\n")
 
         with open("tram_tracks.txt", "w") as f:
             # Write column titles for tram tracks
-            f.write("Type,Time,X,Y,TramTrackID\n")
+            f.write("Type,Time,X,Y,TramTrackID,WorldX,WorldY\n")
             for time, tracks in self.tram_tracks.items():
                 for tid, x, y in tracks:
-                    f.write(f"TramTrack,{time},{x},{y},{tid}\n")
+                    world_x, world_y = self.pixel_to_world(x, y)
+                    f.write(f"TramTrack,{time},{x},{y},{tid},{world_x},{world_y}\n")
 
-        messagebox.showinfo("Info", "Annotations saved successfully!")
+        messagebox.showinfo("Info", "Annotations with world coordinates saved successfully!")
 
     def show_controls(self):
         controls = """
