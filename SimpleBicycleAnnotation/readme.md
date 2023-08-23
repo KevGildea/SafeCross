@@ -26,4 +26,5 @@ _Short term:_
 
 
 _Long term:_
-1. incorporate automatic tracking
+1. incorporate YOLOv5xDCC
+2. use projection to estimate point to use within bounding box
