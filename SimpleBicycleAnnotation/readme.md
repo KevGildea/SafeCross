@@ -14,3 +14,4 @@ Example video: <https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQq
 4. automatically calculate crossing angles
 5. display 3D plot
 6. calculate N_UC
+7. plot a heat map of riskiest areas
