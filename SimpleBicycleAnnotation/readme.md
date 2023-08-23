@@ -19,6 +19,7 @@ _Short term:_
 7. calculate N_UC
 8. plot a heat map of riskiest areas
 9. output image of heatmap
+10. Make How-to video
 
 
 _Long term:_
