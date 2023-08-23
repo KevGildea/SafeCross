@@ -13,7 +13,7 @@ _Short term:_
 1. annotate bicycle front and rear wheels while tracking IDs accross frames ✔
 2. add option for tracking of central position of bicycle only ✔
 3. annotate tracks ✔
-4. read .tcal file
+4. read .tcal file and calculate pixel to world coordinates ✔
 5. filter bicycle tracks (fixed distance between points)
 6. automatically calculate crossing angles
 7. display 3D plot
