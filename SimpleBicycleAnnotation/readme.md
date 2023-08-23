@@ -13,14 +13,15 @@ _Short term:_
 1. annotate bicycle front and rear wheels while tracking IDs accross frames ✔
 2. add option for tracking of central position of bicycle only ✔
 3. annotate tracks ✔
-4. read .tcal file and calculate pixel to world coordinates ✔
-5. filter bicycle tracks (fixed distance between points)
-6. automatically calculate crossing angles
-7. display 3D plot
-8. calculate N_UC
-9. plot a heat map of riskiest areas
-10. output image of heatmap
-11. make How-to video demonstrating functionality and features
+4. read .tcal file and calculate pixel-to-world coordinates ✔
+5. plot global coordinate system at the origin using world-to-pixel transformation ✔
+6. filter bicycle tracks (fixed distance between points)
+7. automatically calculate crossing angles
+8. display 3D plot
+9. calculate N_UC
+10. plot a heat map of riskiest areas
+11. output image of heatmap
+12. make How-to video demonstrating functionality and features
 
 
 _Long term:_
