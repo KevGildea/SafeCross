@@ -9,7 +9,7 @@ Example video: <https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQq
 
 **To do:**
 
-_Shortterm:_
+_Short term:_
 1. annotate bicycle front and rear wheels while tracking IDs accross frames ✔
 2. annotate tracks ✔
 3. read .tcal file
@@ -21,5 +21,5 @@ _Shortterm:_
 9. output image of heatmap
 
 
-_Longterm:_
+_Long term:_
 1. incorporate automatic tracking
