@@ -12,4 +12,5 @@ Example video: <https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQq
 2. read .tcal file
 3. filter bicycle tracks (fixed distance between points)
 4. automatically calculate crossing angles
-5. calculate N_UC
+5. display 3D plot
+6. calculate N_UC
