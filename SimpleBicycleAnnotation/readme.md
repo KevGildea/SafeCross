@@ -8,10 +8,11 @@ Example video: <https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQq
 
 
 **To do:**
-1. annotate tracks ✔
-2. read .tcal file
-3. filter bicycle tracks (fixed distance between points)
-4. automatically calculate crossing angles
-5. display 3D plot
-6. calculate N_UC
-7. plot a heat map of riskiest areas
+1. annotate bicycle front and rear wheels while tracking IDs accross frames ✔
+2. annotate tracks ✔
+3. read .tcal file
+4. filter bicycle tracks (fixed distance between points)
+5. automatically calculate crossing angles
+6. display 3D plot
+7. calculate N_UC
+8. plot a heat map of riskiest areas
