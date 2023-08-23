@@ -16,3 +16,4 @@ Example video: <https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQq
 6. display 3D plot
 7. calculate N_UC
 8. plot a heat map of riskiest areas
+9. output image of heatmap
