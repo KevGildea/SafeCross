@@ -3,6 +3,7 @@ from tkinter import filedialog, messagebox, simpledialog, Menu
 import cv2
 from PIL import Image, ImageTk
 import numpy as np
+import pandas as pd
 
 class VideoAnnotator:
     def __init__(self, root):
@@ -90,7 +91,6 @@ class VideoAnnotator:
             for line in lines:
                 key, value = line.strip().split(":")
                 self.calibration_params[key.strip()] = float(value.strip())
-        print(self.calibration_params)
         
 
     def groundProjectPoint(self, image_point, int_mat, ext_mat, z=0.0):
@@ -160,7 +160,6 @@ class VideoAnnotator:
         image_point /= image_point[2]  # Homogeneous to cartesian coordinates
 
         return int(image_point[0]), int(image_point[1])
-
 
 
     def set_bicycle_mode(self):
@@ -333,23 +332,28 @@ class VideoAnnotator:
             self.tram_tracks[self.current_time] = [t for t in self.tram_tracks[self.current_time] if t[0] != tid]
             self.show_frame()
 
-    def save_annotations(self):
-        with open("annotations.txt", "w") as f:
-            # Write column titles for bicycles
-            f.write("Type,Time,X,Y,BicycleID,WheelType,WorldX,WorldY\n")
-            for time, annotations in self.annotations.items():
-                for coord, bid, wheel_type in annotations:
-                    x, y = coord
-                    world_x, world_y = self.pixel_to_world(x, y)
-                    f.write(f"Bicycle,{time},{x},{y},{bid},{wheel_type},{world_x},{world_y}\n")
 
-        with open("tram_tracks.txt", "w") as f:
-            # Write column titles for tram tracks
-            f.write("Type,Time,X,Y,TramTrackID,WorldX,WorldY\n")
-            for time, tracks in self.tram_tracks.items():
-                for tid, x, y in tracks:
-                    world_x, world_y = self.pixel_to_world(x, y)
-                    f.write(f"TramTrack,{time},{x},{y},{tid},{world_x},{world_y}\n")
+    def save_annotations(self):
+        # For bicycles
+        bicycle_data = []
+        for time, annotations in self.annotations.items():
+            for coord, bid, wheel_type in annotations:
+                x, y = coord
+                world_x, world_y = self.pixel_to_world(x, y)
+                bicycle_data.append(["Bicycle", time, x, y, bid, wheel_type, world_x[0], world_y[0]])
+
+        bicycle_df = pd.DataFrame(bicycle_data, columns=["Type", "Time", "X", "Y", "BicycleID", "WheelType", "WorldX", "WorldY"])
+        bicycle_df.to_excel("annotations.xlsx", index=False)
+
+        # For tram tracks
+        tram_data = []
+        for time, tracks in self.tram_tracks.items():
+            for tid, x, y in tracks:
+                world_x, world_y = self.pixel_to_world(x, y)
+                tram_data.append(["TramTrack", time, x, y, tid, world_x[0], world_y[0]])
+
+        tram_df = pd.DataFrame(tram_data, columns=["Type", "Time", "X", "Y", "TramTrackID", "WorldX", "WorldY"])
+        tram_df.to_excel("tram_tracks.xlsx", index=False)
 
         messagebox.showinfo("Info", "Annotations with world coordinates saved successfully!")
 
@@ -383,3 +387,4 @@ class VideoAnnotator:
 root = tk.Tk()
 app = VideoAnnotator(root)
 root.mainloop()
+
