@@ -4,7 +4,22 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 import re 
-import pandas as pd 
+import pandas as pd
+
+from bicycle import icon_data
+
+import base64
+import os
+import tempfile
+
+# Convert the byte array back to bytes
+icon_bytes = base64.b64decode(icon_data)
+
+# Create a temporary .ico file
+temp_icon = tempfile.NamedTemporaryFile(delete=False, suffix=".ico")
+temp_icon.write(icon_bytes)
+temp_icon.close()
+
 
 # Model parameters
 B_ALPHA = -5.317
@@ -15,7 +30,7 @@ C_BETA = -.043
 class SafeCrossApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title('SafeCross tool')
+        self.title('SafeCross SMoS')
         self.geometry("750x450")
         self.create_widgets()
         self.create_menu()
@@ -165,4 +180,8 @@ class SafeCrossApp(tk.Tk):
 
 if __name__ == "__main__":
     app = SafeCrossApp()
+    # Use the temporary .ico file
+    app.iconbitmap(temp_icon.name)
+    # remove the temporary .ico file
+    os.unlink(temp_icon.name)
     app.mainloop()
