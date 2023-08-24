@@ -19,12 +19,12 @@ _Short term:_
 7. Plot in world coordinates ✔
 9. automatically calculate crossing angles ✔
 10. calculate N_UC
-11. plot a heat map of riskiest areas
-12. output image of heatmap
-13. make How-to video demonstrating functionality and features
+11. make How-to video demonstrating functionality and features
 
 
 _Long term:_
 1. incorporate YOLOv5xDCC
 2. use projection to estimate point to use within bounding box
 3. Try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
+4. plot a heat map of riskiest areas
+5. output image of heatmap
