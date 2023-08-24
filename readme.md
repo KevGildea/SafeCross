@@ -19,7 +19,7 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 <table>
 <tr>
     <td><img src="./trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
-    <td><img src="./trajectory annotation/example output/xlsx_files.png" width="400" /></td>
+    <td><img src="./images/example output/xlsx_files.png" width="400" /></td>
 </tr>
 </table>
 </div>
