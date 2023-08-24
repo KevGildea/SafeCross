@@ -22,7 +22,7 @@ _Short term:_
 6. output as xlsx ✔
 7. Plot in world coordinates ✔
 9. automatically calculate crossing angles ✔
-10. calculate N_UC
+
 11. make How-to video demonstrating functionality and features
 
 
