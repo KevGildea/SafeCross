@@ -6,7 +6,7 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 </div>
 
 <div align="center">
-    <span style="font-size: 500px; color: black;">&darr;</span>
+    <span style="font-size: 150px; color: black;">&darr;</span>
 </div>
 
 <div align="center">
@@ -14,7 +14,7 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 </div>
 
 <div align="center">
-    <span style="font-size: 500px; color: black;">&darr;</span>
+    <span style="font-size: 150px; color: black;">&darr;</span>
 </div>
 
 <div align="center">
