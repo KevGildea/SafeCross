@@ -22,8 +22,7 @@ _Short term:_
 6. output as xlsx ✔
 7. Plot in world coordinates ✔
 9. automatically calculate crossing angles ✔
-
-11. make How-to video demonstrating functionality and features
+10. make How-to video demonstrating functionality and features
 
 
 _Long term:_
