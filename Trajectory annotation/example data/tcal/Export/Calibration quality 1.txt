@@ -1,0 +1,4 @@
+Map, error average: 2 cm (2 cm)
+Map, error max: 4 cm (4 cm)
+Camera, error average: 1 pxl (1 pxl)
+Camera, error max: 1 pxl (1 pxl)

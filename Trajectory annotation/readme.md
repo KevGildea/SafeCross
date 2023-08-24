@@ -5,9 +5,9 @@ Tool for annotating and tracking bicycles crossing tram tracks, given
 
 
 
-Built SafeCross TA tool: <https://drive.google.com/file/d/1hlCrIXd2YjaA4d4PlfwtATVJ92DEjl6t/view?usp=sharing>
+Built SafeCross TA tool: <https://drive.google.com/file/d/1xjvP95p90opQc1klEcRlylIqykLPMiam/view?usp=sharing>
 
-Example data: [video](https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQqn/view?usp=sharing), [.tcal](ADD)
+Example data: [video](), [.tcal](ADD)
 
 
 
