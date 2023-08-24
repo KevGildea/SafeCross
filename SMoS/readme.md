@@ -1,13 +1,17 @@
 GUI for reading in calculated crossing angles, and applying Eqn 2:
 
 
-![equation](https://latex.codecogs.com/svg.latex?N_{UC}=N_{C}\times\frac{\sum_{m=1}^{M}\left\{1-\frac{e^{\alpha+\beta%20x_m}}{1+e^{\alpha+\beta%20x_m}}\right\}}{M})
+![equation](https://latex.codecogs.com/svg.latex?N_{UC}=N_{C}\times\frac{\sum_{m=1}^{M}{1-\frac{e^{\alpha+\beta%20x_m}}{1+e^{\alpha+\beta%20x_m}}}}{M})
 
 
 
-\[ \alpha, \beta \text{ are taken from the modelling,} \]
-\[ \underline{x} = \underline{\theta} \text{ for model (b),} \]
-\[ \underline{x} = \underline{EW} = \left[ \frac{Gap}{\sin(\theta_1)}, \dots, \frac{Gap}{\sin(\theta_M)} \right] \text{ for model (c).} \]
+
+![equation](https://latex.codecogs.com/svg.latex?\alpha,\beta\text{are%20taken%20from%20the%20modelling,})
+
+![equation](https://latex.codecogs.com/svg.latex?\underline{x}=\underline{\theta}\text{for%20model%20(b),})
+
+![equation](https://latex.codecogs.com/svg.latex?\underline{x}=\underline{EW}=\left[\frac{Gap}{\sin(\theta_1)},\dots,\frac{Gap}{\sin(\theta_M)}\right]\text{for%20model%20(c).})
+
 
 
 
