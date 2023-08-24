@@ -2,4 +2,4 @@
 Open source Windows/Linux application for predictive modelling of unsuccessful crossings on tram tracks.
 
 
-![text](./images/SafeCross - Nuc.jpg)
+![text](./images/SafeCrossNuc.jpg)
