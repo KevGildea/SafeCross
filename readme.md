@@ -11,7 +11,7 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 </div>
 
 <div align="center">
-    <img src="./images/down-arrow-png-down-arrow-sketch-free-icon-512.png.png" width="50" />
+    <img src="./images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
 </div>
 
 <div align="center">
@@ -31,7 +31,7 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 
 
 <div align="center">
-    <img src="./images/down-arrow-png-down-arrow-sketch-free-icon-512.png.png" width="50" />
+    <img src="./images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
 </div>
 
 
