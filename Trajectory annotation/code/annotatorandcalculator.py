@@ -5,12 +5,15 @@ from PIL import Image, ImageTk
 import numpy as np
 import pandas as pd
 import math
-from matplotlib import pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
+
 
 class VideoAnnotator:
     def __init__(self, root):
         self.root = root
-        self.root.title("Video Annotator")
+        self.root.title("SafeCross TA")
         
         # Menu bar
         menubar = Menu(root)
@@ -65,6 +68,7 @@ class VideoAnnotator:
 
         
         self.canvas = tk.Canvas(root)
+
         self.canvas.pack(fill=tk.BOTH, expand=tk.YES)
         self.canvas.bind("<Button-1>", self.annotate_position)
         
@@ -202,6 +206,7 @@ class VideoAnnotator:
         self.canvas.create_image(0, 0, anchor=tk.NW, image=photo)
         self.canvas.image = photo
 
+
         if self.current_time in self.annotations:
             for coord, bid, wheel_type in self.annotations[self.current_time]:
                 x, y = coord
@@ -267,8 +272,9 @@ class VideoAnnotator:
         self.canvas.create_line(origin_x, origin_y, z_end_x, z_end_y, fill='blue', arrow=tk.LAST)  # Z-axis in blue
 
 
-        # Update the label with frame number and time
-        self.label.config(text=f"Frame: {self.current_time}, Time: {self.current_time} seconds, Mode: {self.mode}")
+        # Update the label with the time, 
+
+        self.label.config(text=f"Time: {self.current_time} seconds, Mode: {self.mode}")
 
 
     def annotate_position(self, event):
@@ -317,10 +323,12 @@ class VideoAnnotator:
         self.show_frame()
 
     def clear_annotations(self):
-        if self.current_time in self.annotations:
-            del self.annotations[self.current_time]
-        self.tram_points = []  # Clear tram points
-        self.show_frame()
+        response = messagebox.askyesno("Warning", "Are you sure you want to clear all annotations for this frame?")
+        if response:
+            if self.current_time in self.annotations:
+                del self.annotations[self.current_time]
+            self.tram_points = []  # Clear tram points
+            self.show_frame()
 
     def clear_specific_id(self):
         bid = simpledialog.askinteger("Input", "Enter Bicycle ID to clear:")
@@ -331,10 +339,12 @@ class VideoAnnotator:
             self.show_frame()
 
     def clear_tram_tracks(self):
-        """Clear all tram track annotations for the current frame."""
-        if self.current_time in self.tram_tracks:
-            del self.tram_tracks[self.current_time]
-        self.show_frame()
+        # Add 'are you sure' warning before clearing tram tracks
+        response = messagebox.askquestion("Warning", "Are you sure you want to clear all tram tracks for this frame?")
+        if response == 'yes':
+            if self.current_time in self.tram_tracks:
+                del self.tram_tracks[self.current_time]
+            self.show_frame()
 
     def clear_specific_tram_id(self):
         """Clear annotations for a specific tram track ID in the current frame."""
@@ -474,8 +484,8 @@ class VideoAnnotator:
         ax.set_xlabel('WorldX')
         ax.set_ylabel('WorldY')
         ax.set_aspect('equal')
-        plt.show()
-
+        plt.savefig('Sceneplot_WorldCoords.png', dpi=300)  # Save with a resolution of 300 dpi
+        #plt.show()
 
         messagebox.showinfo("Info", "Annotations with world coordinates saved and plotted successfully!")
 
@@ -508,6 +518,7 @@ class VideoAnnotator:
 
 
 root = tk.Tk()
+root.iconbitmap(r'C:\Users\ke4446gi\Work Folders\Desktop\SBCs preliminary analysis\Microsoft-Fluentui-Emoji-Flat-Bicycle-Flat.ico')
 app = VideoAnnotator(root)
 root.mainloop()
 
