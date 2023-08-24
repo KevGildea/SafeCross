@@ -29,6 +29,7 @@ _Short term:_
 2. calculate and plots using model b and/or c  ✔
 3. calculate and output N_UC for a user provided count of cyclists ✔
 4. make How-to video demonstrating functionality and features
+5. add example data
 
 
 _Long term:_
