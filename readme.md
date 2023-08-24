@@ -30,7 +30,7 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 
 
 <div align="center">
-    <img src="./images/xlsx_files.png" width="400" />
+    <img src="./images/xlsx_crossings.png" width="75" />
 </div>
 
 
