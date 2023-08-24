@@ -28,6 +28,17 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 ## **2) SafeCross SMoS**
 [View Details](./SMoS)
 
+
+<div align="center">
+    <img src="./images/xlsx_files.png" width="400" />
+</div>
+
+
+<div align="center">
+    <img src="./images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
+</div>
+
+
 <div align="center">
     <img src="./images/SafeCross SMoS.png" width="400" />
 </div>
