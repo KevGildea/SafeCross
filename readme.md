@@ -2,7 +2,7 @@
 Open source Windows/Linux application for predictive modelling of unsuccessful crossings on tram tracks.
 
 <div align="center">
-    <img src="./images/SimpleBicycleAnnotation.gif" width="400" />
+    <img src="./images/SafeCross TA.gif" width="400" />
 </div>
 
 
