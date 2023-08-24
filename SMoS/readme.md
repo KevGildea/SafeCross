@@ -1,11 +1,10 @@
 GUI for reading in calculated crossing angles, and applying Eqn 2:
 
-\begin{align}\label{Eqn. 7.2}
-\resizebox{.45\hsize}{!}{$
+
+$
 N_{UC}=N_{C}\times \frac{\sum_{m=1}^{M}\left\{ 1-\frac{e^{\alpha+\beta x_m}}{1+e^{\alpha+\beta x_m}} \right\}}{M}
 $
-}
-\end{align}
+
 
 where $\alpha$, $\beta$ are taken from the modelling, and $\underline{x}=\underline{\theta}$ for model (b), or $\underline{x}=\underline{EW}=\left[ \frac{Gap}{sin(\theta_1))}, \dots,\frac{Gap}{sin(\theta_M))} \right]$ for model (c).
 
