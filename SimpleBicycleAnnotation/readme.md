@@ -17,8 +17,7 @@ _Short term:_
 5. plot global coordinate system at the origin using world-to-pixel transformation ✔
 6. output as xlsx ✔
 7. Plot in world coordinates ✔
-8. filter bicycle tracks (fixed distance between points)
-9. automatically calculate crossing angles
+9. automatically calculate crossing angles ✔
 10. calculate N_UC
 11. plot a heat map of riskiest areas
 12. output image of heatmap
