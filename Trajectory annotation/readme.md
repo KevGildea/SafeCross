@@ -1,4 +1,8 @@
-Tool for annotating and tracking bicycles crossing tram tracks.
+Tool for annotating and tracking bicycles crossing tram tracks, given 
+
+1) a stationary video,
+2) a .tcal calibration file ([T-Calibration](https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/))
+
 
 First, calibrate footage using [T-Calibration](https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/).
 
