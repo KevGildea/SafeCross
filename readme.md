@@ -4,7 +4,7 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 
 
 ## **1) SafeCross TA**
-[View Details](./'trajectory annotation')
+[View Details](./trajectory%20annotation)
 
 <div align="center">
     <img src="./images/SafeCross TA.gif" width="400" />
