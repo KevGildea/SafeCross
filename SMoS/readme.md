@@ -18,9 +18,8 @@ GUI for reading in calculated crossing angles, and applying Eqn 2:
 
 To create a standalone app: pyinstaller --onefile _.py
 
-Built app: <>
+Built app: <https://drive.google.com/file/d/1ABynPvPQmtPVHS3FKaWbubzpv3U1sL3p/view?usp=sharing>
 
-Example video: <>
 
 
 **To do:**
