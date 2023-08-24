@@ -14,11 +14,15 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
     <img src="./images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
 </div>
 
+
 <div align="center">
-    <img src="./trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" />
+<table>
+<tr>
+    <td><img src="./trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
+    <td><img src="./trajectory annotation/example output/xlsx_files.png" width="400" /></td>
+</tr>
+</table>
 </div>
-
-
 
 
 ## **2) SafeCross SMoS**
