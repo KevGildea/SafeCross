@@ -14,5 +14,5 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 
 
 <div align="center">
-    <img src="./images/SafeCrossNuc.jpg" width="400" />
+    <img src="./images/SafeCross SMoS.png" width="400" />
 </div>
