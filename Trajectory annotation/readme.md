@@ -1,8 +1,8 @@
-GUI for annotating and tracking bicycles crossing tram tracks.
+Tool for annotating and tracking bicycles crossing tram tracks.
 
-To create a standalone app: pyinstaller --onefile annotateimage.py
+First, calibrate footage using [T-Calibration](https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/).
 
-Built app: <https://drive.google.com/file/d/1hlCrIXd2YjaA4d4PlfwtATVJ92DEjl6t/view?usp=sharing>
+Built tool: <https://drive.google.com/file/d/1hlCrIXd2YjaA4d4PlfwtATVJ92DEjl6t/view?usp=sharing>
 
 Example video: <https://drive.google.com/file/d/1Yp2f51HBcForeNRBcXFL9Lmdvtc7cQqn/view?usp=sharing>
 
