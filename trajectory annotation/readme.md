@@ -21,7 +21,7 @@ _Short term:_
 7. Plot in world coordinates ✔
 9. automatically calculate crossing angles ✔
 10. make How-to video demonstrating functionality and features
-
+11. plot y axis from negative to positive
 
 _Long term:_
 1. incorporate YOLOv5xDCC
