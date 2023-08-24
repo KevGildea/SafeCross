@@ -8,6 +8,21 @@ import math
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+from bicycle import icon_data
+
+
+import base64
+import os
+import tempfile
+
+# Convert the byte array back to bytes
+icon_bytes = base64.b64decode(icon_data)
+
+# Create a temporary .ico file
+temp_icon = tempfile.NamedTemporaryFile(delete=False, suffix=".ico")
+temp_icon.write(icon_bytes)
+temp_icon.close()
+
 
 
 class VideoAnnotator:
@@ -518,7 +533,12 @@ class VideoAnnotator:
 
 
 root = tk.Tk()
-root.iconbitmap(r'C:\Users\ke4446gi\Work Folders\Desktop\SBCs preliminary analysis\Microsoft-Fluentui-Emoji-Flat-Bicycle-Flat.ico')
+#root.iconbitmap(r'C:\Users\ke4446gi\Work Folders\Desktop\SBCs preliminary analysis\Microsoft-Fluentui-Emoji-Flat-Bicycle-Flat.ico')
+# Use the temporary .ico file
+root.iconbitmap(temp_icon.name)
+# remove the temporary .ico file
+os.unlink(temp_icon.name)
+
 app = VideoAnnotator(root)
 root.mainloop()
 
