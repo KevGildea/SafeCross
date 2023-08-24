@@ -32,6 +32,16 @@ Open source Windows/Linux application for predictive modelling of unsuccessful c
 </div>
 
 <div align="center">
-    <img src="./SMoS/example output/model_c_plot.pn" width="400" />
+    <img src="./SMoS/example output/model_c_plot.png" width="400" />
 </div>
 
+
+
+<div align="center">
+<table>
+<tr>
+    <td><img src="./SMoS/example output/model_b_plot.png" width="400" /></td>
+    <td><img src="./SMoS/example output/model_c_plot.png" width="400" /></td>
+</tr>
+</table>
+</div>
