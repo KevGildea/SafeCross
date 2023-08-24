@@ -25,22 +25,14 @@ Example video: <>
 
 **To do:**
 
-_Short term:_
-1. annotate bicycle front and rear wheels while tracking IDs accross frames ✔
-2. add option for tracking of central position of bicycle only ✔
-3. annotate tracks ✔
-4. read .tcal file and calculate pixel-to-world coordinates ✔
-5. plot global coordinate system at the origin using world-to-pixel transformation ✔
-6. output as xlsx ✔
-7. Plot in world coordinates ✔
-9. automatically calculate crossing angles ✔
-10. calculate N_UC
-11. make How-to video demonstrating functionality and features
+_Short term:_ 
+1. read in crossing angles from an excel file with a column marked 'Angle' 
+2. calculate and plots using model b and/or c
+3. calculate and output N_UC for a user provided count of cyclists ✔
+4. make How-to video demonstrating functionality and features
 
 
 _Long term:_
-1. incorporate YOLOv5xDCC
-2. use projection to estimate point to use within bounding box
-3. Try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
-4. plot a heat map of riskiest areas
-5. output image of heatmap
+1. automatically count cyclists for N_UC calculation (in conjunction with SafeCross TA or similar)
+2. plot a heat map of riskiest areas (in conjunction with SafeCross TA or similar)
+3. output image of heatmap (in conjunction with SafeCross TA or similar)
