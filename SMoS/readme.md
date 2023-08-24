@@ -1,7 +1,8 @@
 GUI for reading in calculated crossing angles, and applying Eqn 2:
 
 
-\[ N_{UC} = N_{C} \times \frac{\sum_{m=1}^{M}\left\{ 1-\frac{e^{\alpha+\beta x_m}}{1+e^{\alpha+\beta x_m}} \right\}}{M} \]
+![equation](https://latex.codecogs.com/gif.latex?N_{UC}=N_{C}\times\frac{\sum_{m=1}^{M}\left\{1-\frac{e^{\alpha+\beta%20x_m}}{1+e^{\alpha+\beta%20x_m}}\right\}}{M})
+
 
 \[ \alpha, \beta \text{ are taken from the modelling,} \]
 \[ \underline{x} = \underline{\theta} \text{ for model (b),} \]
