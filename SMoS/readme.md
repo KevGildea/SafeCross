@@ -1,4 +1,4 @@
-GUI for reading in calculated crossing angles, and applying Eqn 2:
+Tool for reading in calculated crossing angles, and applying Eqn 2:
 
 
 ![equation](https://latex.codecogs.com/svg.latex?N_{UC}=N_{C}\times\frac{\sum_{m=1}^{M}{1-\frac{e^{\alpha+\beta%20x_m}}{1+e^{\alpha+\beta%20x_m}}}}{M})
@@ -18,7 +18,7 @@ GUI for reading in calculated crossing angles, and applying Eqn 2:
 
 
 
-Built app: <https://drive.google.com/file/d/1ABynPvPQmtPVHS3FKaWbubzpv3U1sL3p/view?usp=sharing>
+Built SafeCross SMoS tool: <https://drive.google.com/file/d/1ABynPvPQmtPVHS3FKaWbubzpv3U1sL3p/view?usp=sharing>
 
 
 
