@@ -20,8 +20,11 @@ _Short term:_
 6. output as xlsx ✔
 7. Plot in world coordinates ✔
 9. automatically calculate crossing angles ✔
-10. make How-to video demonstrating functionality and features
-11. plot y axis from negative to positive
+10. plot y axis from negative to positive ✔
+11. add filtering and polynomial fitting functionalities
+12. add option to change framerate
+13. make How-to video demonstrating functionality and features
+
 
 _Long term:_
 1. incorporate YOLOv5xDCC
