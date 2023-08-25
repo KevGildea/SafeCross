@@ -1,4 +1,4 @@
 Source code and files used to generate the application.
 
 
-To create a standalone app: pyinstaller --onefile annotateimage.py
+To create a standalone app: pyinstaller --onefile _.py
