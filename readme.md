@@ -30,7 +30,7 @@ Open source Windows/Linux application for predictive modelling of cyclist crossi
 
 
 <div align="center">
-    <img src="./images/xlsx_crossings.png" width="200" />
+    <img src="./images/xlsx_crossings.png" width="150" />
 </div>
 
 
