@@ -15,42 +15,23 @@ Open source Windows/Linux application for predictive modelling of cyclist crossi
 </div>
 
 
-<div align="center">
-<table>
-<tr>
-    <td><img src="./trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
-    <td><img src="./images/xlsx_files.png" width="400" /></td>
-</tr>
-</table>
-</div>
+
 
 <div align="center">
     <table>
         <tr>
-            <td><img src="./trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
             <td><img src="./images/xlsx_files.png" width="400" /></td>
+            <td><img src="./trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
         </tr>
         <tr>
             <!-- Add your headings here -->
-            <th>Automatically convert to world coordinates, and process to calculate crossing angles</th>
             <th>Output all data in .xlsx files</th>
+            <th>Automatically convert to world coordinates, and process to calculate crossing angles</th>
         </tr>
     </table>
 </div>
 
-<div align="center">
-    <table style="background-color: transparent;">
-        <tr>
-            <!-- Add your headings here -->
-            <th style="background-color: transparent;">Output all annotated data in .xlsx files:</th>
-            <th style="background-color: transparent;">Automatically convert to world coordinates, and process to calculate crossing angles:</th>
-        </tr>
-        <tr>
-            <td style="background-color: transparent;"><img src="./images/xlsx_files.png" width="400" /></td>
-            <td style="background-color: transparent;"><img src="./trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
-        </tr>
-    </table>
-</div>
+
 
 
 
