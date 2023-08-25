@@ -1,8 +1,3 @@
-# SafeCross
-Open source Windows/Linux application for predictive modelling of cyclist crossing success on tram tracks.
-
-
-
 ## **1) SafeCross TA**
 [View Details](./trajectory%20annotation)
 
