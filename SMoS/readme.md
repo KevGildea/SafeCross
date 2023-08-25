@@ -6,11 +6,11 @@ Tool for reading in calculated crossing angles, and applying Eqn 2:
 
 
 
-![equation](https://latex.codecogs.com/svg.latex?\alpha,\beta\text{are%20taken%20from%20the%20modelling,})
+![equation](https://latex.codecogs.com/svg.latex?\alpha,\beta\text{%20are%20taken%20from%20the%20modelling,})
 
-![equation](https://latex.codecogs.com/svg.latex?\underline{x}=\underline{\theta}\text{for%20model%20(b),})
+![equation](https://latex.codecogs.com/svg.latex?\underline{x}=\underline{\theta}\text{%20for%20model%20(b),})
 
-![equation](https://latex.codecogs.com/svg.latex?\underline{x}=\underline{EW}=\left[\frac{Gap}{\sin(\theta_1)},\dots,\frac{Gap}{\sin(\theta_M)}\right]\text{for%20model%20(c).})
+![equation](https://latex.codecogs.com/svg.latex?\underline{x}=\underline{EW}=\left[\frac{Gap}{\sin(\theta_1)},\dots,\frac{Gap}{\sin(\theta_M)}\right]\text{%20for%20model%20(c).})
 
 
 
