@@ -32,21 +32,7 @@ Open source Windows/Linux application for predictive modelling of cyclist crossi
 </div>
 
 
-<div align="center">
 
-<table>
-    <tr>
-        <td><img src="./images/xlsx_files.png" width="400" /></td>
-        <td><img src="./trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
-    </tr>
-    <tr>
-        <!-- Add your headings here -->
-        <th>Output all data in .xlsx files</th>
-        <th>Automatically convert to world coordinates, and process to calculate crossing angles</th>
-    </tr>
-</table>
-
-</div>
 
 
 ## **2) SafeCross SMoS**
