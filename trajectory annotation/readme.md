@@ -8,7 +8,7 @@
 </div>
 
 <div align="center">
-    <img src="./images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
+    <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
 </div>
 
 
@@ -17,8 +17,8 @@
 <div align="center">
     <table>
         <tr>
-            <td><img src="./images/xlsx_files.png" width="400" /></td>
-            <td><img src="./trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
+            <td><img src="../images/xlsx_files.png" width="400" /></td>
+            <td><img src="../trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
         </tr>
         <tr>
             <!-- Add your headings here -->
