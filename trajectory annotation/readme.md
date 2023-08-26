@@ -9,7 +9,7 @@ Built SafeCross TA tool: <https://drive.google.com/file/d/1kptsozS1HeLlvq52q8bqF
 
 
 <div align="center">
-    <img src="./images/SafeCross TA.gif" width="400" />
+    <img src="images/SafeCross TA.gif" width="400" />
 </div>
 
 
