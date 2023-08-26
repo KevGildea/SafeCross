@@ -68,13 +68,6 @@
 
 
 
-graph TB
-  A[<img src='https://via.placeholder.com/100' alt='Node A'/>]
-  B[<img src='https://via.placeholder.com/100' alt='Node B'/>]
-  C[Node C without image]
-  A --> B
-  B --> C
-
 
 
 ## Associated Publication
