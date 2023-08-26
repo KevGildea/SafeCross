@@ -1,4 +1,10 @@
 
+<div align="center">
+    <img src="./images/SafeCross pipeline.png" width="1000" />
+</div>
+
+
+
 ## **1) SafeCross TA**
 [View Details](./trajectory%20annotation)
 
