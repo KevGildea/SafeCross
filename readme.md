@@ -72,7 +72,7 @@
 
 ## Associated Publication
 
-This repository is associated with the following paper:
+If you use any part of this repository in your research or work, **please be sure to cite** the following:
 
 **BibTeX Citation:**
 ```bibtex
