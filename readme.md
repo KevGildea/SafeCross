@@ -1,17 +1,3 @@
-## Associated Publication
-
-This repository is associated with the following paper:
-
-**BibTeX Citation:**
-```bibtex
-@article{Gildea2023,
-   author = {Kevin Gildea and Daniel Hall and Clara Mercadal-Baudart and Brian Caulfield and Ciaran Simms},
-   journal = {Journal of Safety Research},
-   title = {Computer vision-based assessment of cyclist-tram track interactions for predictive modelling of crossing success},
-   volume = {In-Press},
-   year = {2023},
-}
-```
 
 ## **1) SafeCross TA**
 [View Details](./trajectory%20annotation)
@@ -79,3 +65,23 @@ This repository is associated with the following paper:
 </tr>
 </table>
 </div>
+
+
+
+
+
+## Associated Publication
+
+This repository is associated with the following paper:
+
+**BibTeX Citation:**
+```bibtex
+@article{Gildea2023,
+   author = {Kevin Gildea and Daniel Hall and Clara Mercadal-Baudart and Brian Caulfield and Ciaran Simms},
+   journal = {Journal of Safety Research},
+   title = {Computer vision-based assessment of cyclist-tram track interactions for predictive modelling of crossing success},
+   volume = {In-Press},
+   year = {2023},
+}
+```
+
