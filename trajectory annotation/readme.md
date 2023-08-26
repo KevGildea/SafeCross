@@ -1,7 +1,7 @@
 
 
 ## **1) SafeCross TA**
-[View Details](./trajectory%20annotation)
+[View Details](../trajectory%20annotation)
 
 <div align="center">
     <img src="./images/SafeCross TA.gif" width="400" />
