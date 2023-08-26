@@ -3,23 +3,23 @@
 
 
 <div align="center">
-    <img src="./images/xlsx_crossings.png" width="150" />
+    <img src="../images/xlsx_crossings.png" width="150" />
 </div>
 
 
 <div align="center">
-    <img src="./images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
+    <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
 </div>
 
 
 <div align="center">
-    <img src="./images/SafeCross SMoS.png" width="400" />
+    <img src="../images/SafeCross SMoS.png" width="400" />
 </div>
 
 
 
 <div align="center">
-    <img src="./images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
+    <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
 </div>
 
 
@@ -27,8 +27,8 @@
 <div align="center">
 <table>
 <tr>
-    <td><img src="./SMoS/example output/model_b_plot.png" width="400" /></td>
-    <td><img src="./SMoS/example output/model_c_plot.png" width="400" /></td>
+    <td><img src="../SMoS/example output/model_b_plot.png" width="400" /></td>
+    <td><img src="../SMoS/example output/model_c_plot.png" width="400" /></td>
 </tr>
 </table>
 </div>
