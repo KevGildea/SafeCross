@@ -1,3 +1,13 @@
+## Associated Publication
+
+This repository is associated with the following paper:
+
+<details>
+  <summary>Click to Copy BibTeX Citation</summary>
+
+
+
+
 ## **1) SafeCross TA**
 [View Details](./trajectory%20annotation)
 
