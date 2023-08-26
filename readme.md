@@ -11,7 +11,7 @@ This repository is associated with the following paper:
    volume = {In-Press},
    year = {2023},
 }
-
+```
 
 ## **1) SafeCross TA**
 [View Details](./trajectory%20annotation)
