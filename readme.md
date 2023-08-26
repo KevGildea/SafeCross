@@ -4,8 +4,7 @@ This repository is associated with the following paper:
 
 <details>
   <summary>Click to Copy BibTeX Citation</summary>
-
-
+<details>
 
 
 ## **1) SafeCross TA**
