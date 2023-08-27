@@ -16,6 +16,9 @@ _short term:_
 9. plot a heat map of riskiest areas
 10. output image of heatmap
 
+
+
+
 _Long term:_
 1. Try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
 
