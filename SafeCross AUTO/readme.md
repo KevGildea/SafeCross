@@ -17,8 +17,8 @@
 <div align="center">
     <table>
         <tr>
-            <td><img src="../SafeCross AUTO/example output/example_CT0.35.gif" width="200" /></td>
-            <td><img src="../SafeCross AUTO/example output/Dee_cycling_CT0.55.gif" width="100" /></td>
+            <td><img src="../SafeCross AUTO/example output/example_CT0.35.gif" width="400" /></td>
+            <td><img src="../SafeCross AUTO/example output/Dee_cycling_CT0.55.gif" width="300" /></td>
         </tr>
     </table>
 </div>
