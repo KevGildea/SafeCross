@@ -5,7 +5,7 @@
 
 
 <div align="center">
-    <img src="../images/SafeCross AUTO.jpg" width="150" />
+    <img src="../images/SafeCross AUTO.JPG" width="150" />
 </div>
 
 
