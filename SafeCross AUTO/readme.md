@@ -17,5 +17,5 @@ _short term:_
 10. output image of heatmap
 
 _Long term:_
-12. Try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
+1. Try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
 
