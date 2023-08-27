@@ -19,7 +19,8 @@
     <table>
         <tr>
             <td><img src="../images/xlsx_files.png" width="400" /></td>
-            <td><img src="../SafeCross AUTO/287ALL/example output/Sceneplot_WorldCoords.png" width="400" /></td>
+            <td><img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="400" /></td>
+            
         </tr>
         <tr>
             <!-- Add your headings here -->
