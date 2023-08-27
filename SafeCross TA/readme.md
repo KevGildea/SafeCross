@@ -18,7 +18,7 @@
     <table>
         <tr>
             <td><img src="../images/xlsx_files.png" width="400" /></td>
-            <td><img src="../trajectory annotation/example output/Sceneplot_WorldCoords.png" width="400" /></td>
+            <td><img src="../SafeCross TA/example output/Sceneplot_WorldCoords.png" width="400" /></td>
         </tr>
         <tr>
             <!-- Add your headings here -->
