@@ -27,8 +27,8 @@
 <div align="center">
 <table>
 <tr>
-    <td><img src="../SMoS/example output/model_b_plot.png" width="400" /></td>
-    <td><img src="../SMoS/example output/model_c_plot.png" width="400" /></td>
+    <td><img src="../SafeCross SMoS/example output/model_b_plot.png" width="400" /></td>
+    <td><img src="../SafeCross SMoS/example output/model_c_plot.png" width="400" /></td>
 </tr>
 </table>
 </div>
