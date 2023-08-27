@@ -3,6 +3,14 @@
 ## **1) SafeCross AUTO**
 
 
+<div align="center">
+    <img src="../images/xlsx_tracks.png" width="150" />
+</div>
+
+<div align="center">
+    <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
+</div>
+
 
 <div align="center">
     <img src="../images/SafeCross AUTO.gif" width="400" />
