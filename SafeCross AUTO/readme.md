@@ -4,6 +4,22 @@
 
 
 
+<div align="center">
+    <img src="../images/SafeCross AUTO.jpg" width="150" />
+</div>
+
+
+<div align="center">
+    <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
+</div>
+
+
+
+
+
+
+
+
 _short term:_
 1. incorporate YOLOv5xDCC and SORT ✔
 2. add option for user to specify confidence level threshold ✔
