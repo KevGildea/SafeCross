@@ -1,0 +1,22 @@
+Map:          Map.png
+X0:           -96
+Y0:           -54
+Dx:           1
+Dy:           0
+Scale:        5
+
+Camera count: 1
+Camera 1:     Camera_1.png
+
+Point count:  9
+
+Xw,m;Yw,m;Zw,m;GroundPlane;Active;X1,pxl;Y1,pxl;Active1
+0.000;0.000;0.000;True;True;33;382;True
+0.000;-1.500;0.000;True;True;43;310;True
+0.000;-3.000;0.000;True;True;48;260;True
+1.500;0.000;0.000;True;True;164;368;True
+3.000;0.000;0.000;True;True;281;356;True
+1.500;-1.500;0.000;True;True;149;300;True
+3.000;-1.500;0.000;True;True;248;292;True
+1.500;-3.000;0.000;True;True;140;253;True
+3.000;-3.000;0.000;True;True;223;246;True
