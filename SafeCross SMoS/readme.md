@@ -13,7 +13,7 @@
 
 
 <div align="center">
-    <img src="../images/SafeCross SMoS.png" width="400" />
+    <img src="../images/SafeCross SMoS.PNG" width="400" />
 </div>
 
 
