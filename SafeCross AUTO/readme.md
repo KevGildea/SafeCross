@@ -5,24 +5,8 @@
 
 
 <div align="center">
-    <img src="../images/SafeCross AUTO.JPG" width="400" />
+    <img src="../SafeCross AUTO/example output/example_CT0.35.gif" width="400" />
 </div>
-
-
-<div align="center">
-    <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
-</div>
-
-
-<div align="center">
-    <table>
-        <tr>
-            <td><img src="../SafeCross AUTO/example output/example_CT0.35.gif" width="400" /></td>
-            <td><img src="../SafeCross AUTO/example output/Dee_cycling_CT0.55.gif" width="300" /></td>
-        </tr>
-    </table>
-</div>
-
 
 
 
