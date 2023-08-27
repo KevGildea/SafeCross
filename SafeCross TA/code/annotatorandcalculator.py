@@ -8,8 +8,8 @@ import math
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-from bicycle import icon_data
 
+from bicycle import icon_data
 
 import base64
 import os
@@ -499,6 +499,7 @@ class VideoAnnotator:
         ax.set_xlabel('WorldX')
         ax.set_ylabel('WorldY')
         ax.set_aspect('equal')
+        ax.invert_yaxis()  # This will reverse the y-axis for visualisation (an artifact of calibration)
         plt.savefig('Sceneplot_WorldCoords.png', dpi=300)  # Save with a resolution of 300 dpi
         #plt.show()
 
