@@ -16,7 +16,7 @@
 <div align="center">
     <table>
         <tr>
-            <td><img src="../images/SafeCross AUTO.gif" width="600" /></td> 
+            <td><img src="../images/SafeCross AUTO.gif" width="700" /></td> 
         </tr>
         <tr>
             <th>Applies retrained YOLOv5x (red bounding boxes), and SORT algorithm for tracking (green bounding boxes)</th>
