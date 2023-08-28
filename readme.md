@@ -18,7 +18,7 @@ If you use any part of this repository in your research or work, **please be sur
    title = {Computer vision-based assessment of cyclist-tram track interactions for predictive modelling of crossing success},
    volume = {In-Press},
    year = {2023},
-   url = {https://github.com/KevGildea/SafeCross/}  % GitHub project page URL
+   url = {https://github.com/KevGildea/SafeCross/}
 }
 ```
 
