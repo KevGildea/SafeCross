@@ -27,7 +27,7 @@
     <table>
         <tr>
             <td><img src="../images/xlsx_annotationsandcrossings.png" width="300" /></td>
-            <td><img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="400" /></td> 
+            <td><img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="600" /></td> 
         </tr>
         <tr>
             <!-- Add your headings here -->
