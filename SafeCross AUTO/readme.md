@@ -12,10 +12,6 @@
 </div>
 
 
-<div align="center">
-    <img src="../images/SafeCross AUTO.gif" width="400" />
-</div>
-
 
 <div align="center">
     <table>
