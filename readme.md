@@ -1,6 +1,6 @@
 
 <div align="center">
-    <img src="./images/SafeCross pipeline 2.png" width="1000" />
+    <img src="./images/SafeCross pipeline.png" width="1000" />
 </div>
 
 
