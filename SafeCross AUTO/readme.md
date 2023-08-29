@@ -49,6 +49,11 @@
 
 
 
+Retrained YOLOv5x model: <>
+
+
+
+
 _short term:_
 1. incorporate YOLOv5xDCC and SORT ✔
 2. add option for user to specify confidence level threshold ✔
