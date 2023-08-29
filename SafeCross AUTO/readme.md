@@ -46,10 +46,28 @@
 </div>
 
 
+## Requirements
 
+To run this code, you'll need to install the following Python packages:
 
+### Libraries
+- **torch**: For deep learning tasks, specifically [YOLOv5](https://github.com/ultralytics/yolov5) model.
+- **cv2 (OpenCV)**: For video and image processing.
+- **numpy**: For numerical operations.
+- **pandas**: For data manipulation and analysis.
+- **tkinter**: For GUI dialogs.
+- **scipy**: Specifically for the Savitzky-Golay filter.
+- **matplotlib**: For plotting and data visualization.
 
-Retrained YOLOv5x model: <>
+### Custom Modules
+- **sort**: A custom module for SORT ([Simple Online and Realtime Tracking](https://github.com/abewley/sort)).
+
+### File Formats
+- **Excel files (.xlsx)**: For reading tram track data and writing annotations.
+- **TACAL files (.tacal)**: For camera calibration parameters for tomography transformation - can be obtained from the [T-calibration](https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/) tool, or similar, so long as the format is of the form [example.tacal](https://github.com/KevGildea/SafeCross/blob/main/SafeCross%20AUTO/example%20data/Dublin/tacal/example.tacal).
+
+### **Retrained YOLO model**
+- <>
 
 
 
