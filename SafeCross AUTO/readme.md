@@ -1,6 +1,6 @@
 
 
-## **1) SafeCross AUTO**
+## **SafeCross AUTO**
 
 
 <div align="center">
