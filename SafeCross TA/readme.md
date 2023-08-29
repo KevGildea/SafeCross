@@ -1,6 +1,6 @@
 
 
-## **1) SafeCross TA**
+## **SafeCross TA**
 
 
 <div align="center">
