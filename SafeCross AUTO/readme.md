@@ -49,7 +49,7 @@ Note: the standalone application can be downloaded from this Google Drive [link]
 
 
 ## Acknowledgments
-Special thanks to Joseph Redmon and Santosh Divvala, the developers of the [YOLO (You Only Look Once)](https://arxiv.org/abs/1506.02640) object detection algorithm, and to Alex Bewley for the [SORT (Simple Online and Realtime Tracking)](https://arxiv.org/abs/1602.00763) algorithm. These tools have been essential in the development of this project.
+Special thanks to the developers of the [YOLO (You Only Look Once)](https://arxiv.org/abs/1506.02640) object detection algorithm at [Ultralytics](https://github.com/ultralytics/), and to Alex Bewley, Zongyuan Ge, Lionel Ott, Fabio Ramos, and Ben Upcroft for the [SORT (Simple Online and Realtime Tracking)](https://arxiv.org/abs/1602.00763) algorithm. These tools have been essential in the development of this project.
 
 
 
