@@ -29,7 +29,7 @@ Note: the standalone application can be downloaded from this Google Drive [link]
 - **TACAL files (.tacal)**: For camera calibration parameters for tomography transformation - can be obtained from the [T-calibration](https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/) tool, or similar, so long as the format is of the form [example.tacal](https://github.com/KevGildea/SafeCross/blob/main/SafeCross%20AUTO/example%20data/Dublin/tacal/example.tacal).
 
 <div align="center">
-<img src="../images/SafeCross AUTO.gif" width="500" />
+<img src="../images/SafeCross AUTO.gif" width="300" />
 </div>
 
 
@@ -39,7 +39,7 @@ Note: the standalone application can be downloaded from this Google Drive [link]
 
 
 <div align="center">
-<img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="600" />
+<img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="500" />
 </div>
 
 
