@@ -50,22 +50,6 @@
 
 ### Directory format
 
-```
-.
-├── src
-│   ├── SafeCross AUTO.exe
-│   └── [yolov5](https://github.com/ultralytics/yolov5/)
-│       ├── .github
-│       └── classify
-│       ...
-├── data
-│   ├── tram_tracks.xlsx
-│   ├── example.mp4
-│   └── example.tacal
-├── model
-    └── [yolov5x.pt](https://drive.google.com/file/d/1QWWPHsp7amwtncWRP3atRaDncN9ohmbK/view?usp=sharing) (retrained on Dublin data)
-
-```
 
 ```plaintext
 .
@@ -101,9 +85,6 @@ _short term:_
 3. read in tram track annotations ✔
 4. plot world coordinate system and tram tracks on the images ✔
 5. incorporate risk models for plotting heat map
-
-
-
 
 _Long term:_
 1. Try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
