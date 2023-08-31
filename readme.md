@@ -16,9 +16,10 @@ If you use any part of this repository in your research or work, **please be sur
    author = {Kevin Gildea and Daniel Hall and Clara Mercadal-Baudart and Brian Caulfield and Ciaran Simms},
    journal = {Journal of Safety Research},
    title = {Computer vision-based assessment of cyclist-tram track interactions for predictive modelling of crossing success},
-   volume = {In-Press},
+   note = {In Press},
    year = {2023},
-   url = {https://github.com/KevGildea/SafeCross/}
+   url = {https://github.com/KevGildea/SafeCross/},
+   howpublished = {\url{https://github.com/KevGildea/SafeCross/}}
 }
 ```
 
