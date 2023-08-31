@@ -10,7 +10,7 @@ from scipy.signal import savgol_filter
 # Prompt user to select video file
 root = tk.Tk()
 root.title("SafeCross AUTO")
-#root.withdraw()  # Hide the main window
+root.withdraw()  # Hide the main window
 root.geometry("300x300")
 
 def show_about():
