@@ -7,8 +7,12 @@ import numpy as np
 import pandas as pd
 from scipy.signal import savgol_filter
 
-import yaml
-import seaborn as sn
+
+# YOLOv5 requirements
+# Base
+import yaml  # PyYAML
+import seaborn
+
 
 # Prompt user to select video file
 root = tk.Tk()
@@ -23,6 +27,7 @@ if not video_path:
     print("No video file selected. Exiting.")
     exit()
 
+
 # Prompt user to specify the confidence level for YOLO
 confidence_threshold = simpledialog.askfloat("Input", "Enter confidence level for YOLO (e.g., 0.5):", minvalue=0.0, maxvalue=1.0)
 if confidence_threshold is None:  # If user closes the dialog or cancels
@@ -30,7 +35,9 @@ if confidence_threshold is None:  # If user closes the dialog or cancels
     confidence_threshold = 0.5
 
 # Model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5x', pretrained=True)
+#model = torch.hub.load('ultralytics/yolov5', 'yolov5x', pretrained=True)
+model = torch.hub.load('yolov5', 'yolov5x', source='local', pretrained=True)
+
 
 # Initialize SORT tracker
 tracker = Sort()
