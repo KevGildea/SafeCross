@@ -48,7 +48,29 @@
 
 ## Requirements
 
-To run this code, you'll need to install the following Python packages:
+### Directory format
+
+```
+.
+├── src
+│   ├── main.py
+│   └── utils.py
+├── data
+│   ├── train.csv
+│   └── test.csv
+├── notebooks
+│   └── exploration.ipynb
+├── requirements.txt
+└── README.md
+```
+
+
+[SORT](https://github.com/abewley/sort)
+
+### Libraries
+You'll need to install the Python packages in [requirements.txt](https://github.com/KevGildea/SafeCross/blob/main/SafeCross%20AUTO/requirements.txt).
+
+
 
 ### Libraries
 - **torch**: For deep learning tasks, specifically [YOLOv5](https://github.com/ultralytics/yolov5) model.
@@ -60,7 +82,7 @@ To run this code, you'll need to install the following Python packages:
 - **matplotlib**: For plotting and data visualization.
 
 ### Custom Modules
-- **sort**: A custom module for SORT ([Simple Online and Realtime Tracking](https://github.com/abewley/sort)).
+- **sort**: A custom module for .
 
 ### File Formats
 - **Excel files (.xlsx)**: For reading tram track data and writing annotations.
