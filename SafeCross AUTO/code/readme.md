@@ -4,9 +4,9 @@ Source code and files used to generate the application.
 To create a standalone app:
 
 1. create venv
-2. download SafeCrossAUTO.py
-3. clone Yolov5 and SORT into the same folder
-4. install requirements
+2. download [SafeCrossAUTO.py](https://github.com/KevGildea/SafeCross/blob/main/SafeCross%20AUTO/code/SafeCrossAUTO.py)
+3. clone [YOLOv5](https://github.com/ultralytics/yolov5/) and [SORT](https://github.com/abewley/sort) into the same folder
+4. install requirements for all three 
 5. run:
 ```bash
 pyinstaller --add-data "D:\repositories\Windows\SafeCrossAUTO\SafeCrossAUTOvenv\Lib\site-packages\ultralytics\cfg\default.yaml;ultralytics/cfg/" --hidden-import=ultralytics --hidden-import=git --hidden-import=PIL --hidden-import=yaml --onefile SafeCrossAUTO.py
