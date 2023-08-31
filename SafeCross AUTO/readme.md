@@ -2,6 +2,25 @@
 
 ## **SafeCross AUTO**
 
+
+
+<div align="center">
+<img src="../images/SafeCross AUTO.gif" width="300" />
+</div>
+
+
+<div align="center">
+<img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
+</div>
+
+
+<div align="center">
+<img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="500" />
+</div>
+
+
+
+
 ### Directory format
 
 
@@ -27,21 +46,6 @@ Note: the standalone application can be downloaded from this Google Drive [link]
 ### File Formats
 - **Excel files (.xlsx)**: For reading tram track data and writing annotations.
 - **TACAL files (.tacal)**: For camera calibration parameters for tomography transformation - can be obtained from the [T-calibration](https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/) tool, or similar, so long as the format is of the form [example.tacal](https://github.com/KevGildea/SafeCross/blob/main/SafeCross%20AUTO/example%20data/Dublin/tacal/example.tacal).
-
-<div align="center">
-<img src="../images/SafeCross AUTO.gif" width="300" />
-</div>
-
-
-<div align="center">
-<img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
-</div>
-
-
-<div align="center">
-<img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="500" />
-</div>
-
 
 
 
