@@ -7,25 +7,69 @@ import numpy as np
 import pandas as pd
 from scipy.signal import savgol_filter
 
-
-# YOLOv5 requirements
-# Base
-import yaml  # PyYAML
-import seaborn
-
-
 # Prompt user to select video file
 root = tk.Tk()
-root.withdraw()  # Hide the main window
-video_path = filedialog.askopenfilename(title="Select the video file")
+root.title("SafeCross AUTO")
+#root.withdraw()  # Hide the main window
+root.geometry("300x300")
 
+def show_about():
+    about_window = tk.Toplevel(root)
+    about_window.title("About")
+
+    info = (
+        "Developed by Kevin Gildea, Ph.D.\n"
+        "Faculty of Engineering, LTH\n"
+        "Lund University\n"
+        "Email: kevin.gildea@tft.lth.se"
+    )
+
+    label = tk.Label(about_window, text=info, font=("Arial", 8))
+    label.pack(pady=15)
+
+
+# Create menu bar
+menu_bar = tk.Menu(root)
+
+# Create 'Help' menu
+help_menu = tk.Menu(menu_bar, tearoff=0)
+help_menu.add_command(label="About", command=show_about)
+
+# Add 'Help' menu to menu bar
+menu_bar.add_cascade(label="Help", menu=help_menu)
+
+# Add menu bar to root window
+root.config(menu=menu_bar)
+
+
+
+# Prompt user to select tram_tracks.xlsx file
+tram_tracks_path = filedialog.askopenfilename(title="Select the tram_tracks.xlsx file", filetypes=[("Excel files", "*.xlsx")])
+if not tram_tracks_path:
+    print("No tram_tracks.xlsx file selected. Exiting.")
+    exit()
+df = pd.read_excel(tram_tracks_path, engine='openpyxl')
 # Read the Excel file
-df = pd.read_excel('tram_tracks.xlsx', engine='openpyxl')
+#df = pd.read_excel('tram_tracks.xlsx', engine='openpyxl')
 
-# Check if a file was selected
+
+video_path = filedialog.askopenfilename(title="Select the video file")
 if not video_path:
     print("No video file selected. Exiting.")
     exit()
+
+
+
+# Model
+#model = torch.hub.load('ultralytics/yolov5', 'yolov5x', pretrained=True)
+#model = torch.hub.load('yolov5', 'yolov5x', source='local', pretrained=True)
+
+# Prompt user to select custom YOLOv5x model file
+model_path = filedialog.askopenfilename(title="Select the YOLOv5x model file", filetypes=[("PyTorch files", "*.pt")])
+if not model_path:
+    print("No YOLOv5x model file selected. Exiting.")
+    exit()
+model = torch.hub.load('yolov5', 'custom', path=model_path, source='local')
 
 
 # Prompt user to specify the confidence level for YOLO
@@ -34,10 +78,12 @@ if confidence_threshold is None:  # If user closes the dialog or cancels
     print("No confidence level specified. Using default value of 0.5.")
     confidence_threshold = 0.5
 
-# Model
-#model = torch.hub.load('ultralytics/yolov5', 'yolov5x', pretrained=True)
-model = torch.hub.load('yolov5', 'yolov5x', source='local', pretrained=True)
-
+# Prompt user to specify the tracking point within the bounding box
+tracking_point_options = ['centre', 'centre-left', 'centre-right', 'top-centre', 'top-left', 'top-right', 'bottom-centre', 'bottom-left', 'bottom-right']
+tracking_point = simpledialog.askstring("Input", "Specify the tracking point within the bounding box:", initialvalue="bottom-centre")
+if tracking_point not in tracking_point_options:
+    print(f"Invalid tracking point specified. Using default value of 'bottom-centre'.")
+    tracking_point = "bottom-centre"
 
 # Initialize SORT tracker
 tracker = Sort()
@@ -61,13 +107,6 @@ out = cv2.VideoWriter('output.avi', fourcc, fps, (frame_width, frame_height))
 # List of road users to track
 road_users = ['bicycle']  #, 'car', 'motorcycle', 'bus', 'truck', 'person'
 
-
-# Prompt user to specify the tracking point within the bounding box
-tracking_point_options = ['centre', 'centre-left', 'centre-right', 'top-centre', 'top-left', 'top-right', 'bottom-centre', 'bottom-left', 'bottom-right']
-tracking_point = simpledialog.askstring("Input", "Specify the tracking point within the bounding box:", initialvalue="bottom-centre")
-if tracking_point not in tracking_point_options:
-    print(f"Invalid tracking point specified. Using default value of 'bottom-centre'.")
-    tracking_point = "bottom-centre"
 
 
 world_coordinates_list = []
@@ -296,7 +335,7 @@ grouped_trams = tram_tracks.groupby('TramTrackID')
 
 
 # Prompt user to specify the window length for Savitzky-Golay filter
-window_length = simpledialog.askinteger("Input", "Specify the window length for Savitzky-Golay filter (must be an odd number):", initialvalue=31)
+window_length = simpledialog.askinteger("Savitzky-Golay filter", "Specify window length (must be an odd number):", initialvalue=31)
 if window_length is None or window_length % 2 == 0:  # Ensure it's an odd number
     print("Invalid window length specified. Using default value of 31.")
     window_length = 31
@@ -395,11 +434,6 @@ ax.invert_yaxis()  # This will reverse the y-axis for visualisation (an artifact
 plt.savefig('Sceneplot_WorldCoords.png', dpi=300)  # Save with a resolution of 300 dpi
 
 
-
-
-
-
 cap.release()
 out.release()  # Release the VideoWriter
 cv2.destroyAllWindows()
-
