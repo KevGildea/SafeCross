@@ -30,7 +30,9 @@ Note: the standalone application can be downloaded from this Google Drive [link]
 
 <div align="center">
 <img src="../images/SafeCross AUTO.gif" width="500" />
+    
 <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
+
 <img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="600" />
 </div>
 
