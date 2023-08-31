@@ -33,12 +33,10 @@
 
 
 
+Note: the standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1kptsozS1HeLlvq52q8bqFGerR2BdwloJ/view?usp=sharing), and the T-Calibration tool can be found [here](https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/).
 
 
 
-Built SafeCross TA tool: <https://drive.google.com/file/d/1kptsozS1HeLlvq52q8bqFGerR2BdwloJ/view?usp=sharing>
-
-T-Calibration tool: <https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/>
 
 
 
