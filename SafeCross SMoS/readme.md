@@ -47,7 +47,8 @@
 
 
 
-Note: the standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1ABynPvPQmtPVHS3FKaWbubzpv3U1sL3p/view?usp=sharing).
+### Downloads
+The standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1ABynPvPQmtPVHS3FKaWbubzpv3U1sL3p/view?usp=sharing).
 
 
 
