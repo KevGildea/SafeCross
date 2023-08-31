@@ -43,7 +43,7 @@ T-Calibration tool: <https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/>
 
 
 
-**To do:**
+### To-do
 
 _Short term:_
 1. annotate bicycle front and rear wheels while tracking IDs accross frames ✔
