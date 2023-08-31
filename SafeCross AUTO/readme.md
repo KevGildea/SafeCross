@@ -32,59 +32,15 @@ Note: the standalone application can be downloaded from this Google Drive [link]
 <img src="../images/SafeCross AUTO.gif" width="500" />
 </div>
 
+
 <div align="center">
 <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
 </div>
 
+
 <div align="center">
 <img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="600" />
 </div>
-
-
-
-<div align="center">
-    <img src="../images/xlsx_tracks.png" width="150" />
-</div>
-
-<div align="center">
-    <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
-</div>
-
-
-
-<div align="center">
-    <table>
-        <tr>
-            <td><img src="../images/SafeCross AUTO.gif" width="500" /></td> 
-        </tr>
-        <tr>
-            <th>Applies retrained YOLOv5x (red bounding boxes), and SORT algorithm for tracking (green bounding boxes)</th>
-        </tr>
-    </table>
-</div>
-
-
-<div align="center">
-    <img src="../images/down-arrow-png-down-arrow-sketch-free-icon-512.png" width="50" />
-</div>
-
-
-
-
-<div align="center">
-    <table>
-        <tr>
-            <td><img src="../images/xlsx_annotationsandcrossings.png" width="300" /></td>
-            <td><img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="600" /></td> 
-        </tr>
-        <tr>
-            <th>Output all data in .xlsx files</th>
-            <th>Automatically convert to world coordinates, and process to calculate crossing angles</th>
-        </tr>
-    </table>
-</div>
-
-
 
 
 
