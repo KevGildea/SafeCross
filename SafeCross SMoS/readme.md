@@ -46,7 +46,9 @@
 ![equation](https://latex.codecogs.com/svg.latex?\underline{x}=\underline{EW}=\left[\frac{Gap}{\sin(\theta_1)},\dots,\frac{Gap}{\sin(\theta_M)}\right]\text{%20for%20model%20(c).})
 
 
-Built SafeCross SMoS tool: <https://drive.google.com/file/d/1ABynPvPQmtPVHS3FKaWbubzpv3U1sL3p/view?usp=sharing>
+
+Note: the standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1ABynPvPQmtPVHS3FKaWbubzpv3U1sL3p/view?usp=sharing).
+
 
 
 
