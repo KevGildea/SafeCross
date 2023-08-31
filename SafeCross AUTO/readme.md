@@ -2,6 +2,35 @@
 
 ## **SafeCross AUTO**
 
+### Directory format
+
+
+```plaintext
+.
+├── src
+│   ├── SafeCross AUTO.exe
+│   └── yolov5
+│       ├── .github
+│       └── classify
+│       ...
+├── data
+│   ├── tram_tracks.xlsx
+│   ├── example.mp4
+│   └── example.tacal
+├── model
+    └── yolov5x.pt (retrained on Dublin data)
+```
+
+Note: `yolov5` is the GitHub repository available [here](https://github.com/ultralytics/yolov5/), and `yolov5x.pt` can be downloaded from [this Google Drive link](https://drive.google.com/file/d/1QWWPHsp7amwtncWRP3atRaDncN9ohmbK/view?usp=sharing).
+
+
+### File Formats
+- **Excel files (.xlsx)**: For reading tram track data and writing annotations.
+- **TACAL files (.tacal)**: For camera calibration parameters for tomography transformation - can be obtained from the [T-calibration](https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/) tool, or similar, so long as the format is of the form [example.tacal](https://github.com/KevGildea/SafeCross/blob/main/SafeCross%20AUTO/example%20data/Dublin/tacal/example.tacal).
+
+
+
+
 
 <div align="center">
     <img src="../images/xlsx_tracks.png" width="150" />
@@ -45,35 +74,6 @@
     </table>
 </div>
 
-
-## Requirements
-
-### Directory format
-
-
-```plaintext
-.
-├── src
-│   ├── SafeCross AUTO.exe
-│   └── yolov5
-│       ├── .github
-│       └── classify
-│       ...
-├── data
-│   ├── tram_tracks.xlsx
-│   ├── example.mp4
-│   └── example.tacal
-├── model
-    └── yolov5x.pt (retrained on Dublin data)
-```
-
-Note: `yolov5` is the GitHub repository available [here](https://github.com/ultralytics/yolov5/), and `yolov5x.pt` can be downloaded from [this Google Drive link](https://drive.google.com/file/d/1QWWPHsp7amwtncWRP3atRaDncN9ohmbK/view?usp=sharing).
-
-
-
-### File Formats
-- **Excel files (.xlsx)**: For reading tram track data and writing annotations.
-- **TACAL files (.tacal)**: For camera calibration parameters for tomography transformation - can be obtained from the [T-calibration](https://bitbucket.org/TrafficAndRoads/tanalyst/downloads/) tool, or similar, so long as the format is of the form [example.tacal](https://github.com/KevGildea/SafeCross/blob/main/SafeCross%20AUTO/example%20data/Dublin/tacal/example.tacal).
 
 
 
