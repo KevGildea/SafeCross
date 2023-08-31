@@ -9,4 +9,4 @@ To create a standalone app:
 4. install requirements for all three 
 5. run:
 ```bash
-pyinstaller --add-data "D:\repositories\Windows\SafeCrossAUTO\SafeCrossAUTOvenv\Lib\site-packages\ultralytics\cfg\default.yaml;ultralytics/cfg/" --hidden-import=ultralytics --hidden-import=git --hidden-import=PIL --hidden-import=yaml --onefile SafeCrossAUTO.py
+pyinstaller --add-data "your\path\SafeCrossAUTOvenv\Lib\site-packages\ultralytics\cfg\default.yaml;ultralytics/cfg/" --hidden-import=ultralytics --hidden-import=git --hidden-import=PIL --hidden-import=yaml --onefile SafeCrossAUTO.py
