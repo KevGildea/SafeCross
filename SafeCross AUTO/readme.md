@@ -40,7 +40,8 @@
     └── yolov5x.pt (retrained on Dublin data)
 ```
 
-Note: the standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1XtshKne4uYplc2j4_M1CqLpofHj9cTMJ/view?usp=sharing), `yolov5` is the GitHub repository available [here](https://github.com/ultralytics/yolov5/), and `yolov5x.pt` can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1QWWPHsp7amwtncWRP3atRaDncN9ohmbK/view?usp=sharing).
+### Downloads
+The standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1XtshKne4uYplc2j4_M1CqLpofHj9cTMJ/view?usp=sharing), `yolov5` is the GitHub repository available [here](https://github.com/ultralytics/yolov5/), and `yolov5x.pt` can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1QWWPHsp7amwtncWRP3atRaDncN9ohmbK/view?usp=sharing).
 
 
 ### File Formats
