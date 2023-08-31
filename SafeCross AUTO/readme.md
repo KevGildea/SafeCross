@@ -54,7 +54,8 @@ Special thanks to the developers of the [YOLO (You Only Look Once)](https://arxi
 
 
 
-**To do:**
+### To-do
+
 _short term:_
 1. incorporate YOLOv5xDCC and SORT ✔
 2. add option for user to specify confidence level threshold ✔
