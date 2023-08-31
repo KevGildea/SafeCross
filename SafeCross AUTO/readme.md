@@ -18,7 +18,9 @@
 <img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="500" />
 </div>
 
-
+<div align="center">
+<img src="../SafeCross AUTO/example output/287ALL/blended_heatmap.png" width="500" />
+</div>
 
 
 ### Directory format
