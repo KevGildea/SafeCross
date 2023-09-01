@@ -10,9 +10,7 @@ from scipy.signal import savgol_filter
 # Prompt user to select video file
 root = tk.Tk()
 root.title("SafeCross AUTO")
-root.withdraw()  # Hide the main window
 root.geometry("300x300")
-
 def show_about():
     about_window = tk.Toplevel(root)
     about_window.title("About")
@@ -26,6 +24,8 @@ def show_about():
 
     label = tk.Label(about_window, text=info, font=("Arial", 8))
     label.pack(pady=15)
+
+root.withdraw()  # Hide the main window
 
 
 # Create menu bar
@@ -175,9 +175,30 @@ class CameraCalibration:
         return world_coords[0], world_coords[1]
 
 
+    def world_to_pixel(self, world_x, world_y, world_z=0.0):
+        """Convert world coordinates to pixel coordinates."""
+        # Construct the intrinsic matrix from self.calibration_params
+        int_mat = np.array([
+            [self.calibration_params['f'], 0, self.calibration_params['Cx']],
+            [0, self.calibration_params['f'], self.calibration_params['Cy']],
+            [0, 0, 1]
+        ])
+
+        # Construct the extrinsic matrix from self.calibration_params
+        ext_mat = np.array([
+            [self.calibration_params['r1'], self.calibration_params['r2'], self.calibration_params['r3'], self.calibration_params['Tx']],
+            [self.calibration_params['r4'], self.calibration_params['r5'], self.calibration_params['r6'], self.calibration_params['Ty']],
+            [self.calibration_params['r7'], self.calibration_params['r8'], self.calibration_params['r9'], self.calibration_params['Tz']]
+        ])
+
+        world_point = np.array([[world_x], [world_y], [world_z], [1]])
+        image_point = int_mat @ ext_mat @ world_point
+        image_point /= image_point[2]  # Homogeneous to cartesian coordinates
+
+        return int(image_point[0]), int(image_point[1])
+
 # Initialize CameraCalibration
 camera_calib = CameraCalibration()
-
 
 
 
@@ -186,8 +207,6 @@ while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
             break
-
-
 
         # Inference : DO NOT DRAW ANYTHING ON THE IMAGE UNTIL AFTER
         results = model(frame)
@@ -295,7 +314,6 @@ df_output = pd.DataFrame(world_coordinates_list, columns=["Type", "Time", "X", "
 df_output.to_excel("annotations.xlsx", index=False)
 
 
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -396,6 +414,10 @@ for tram_id, tram_group in grouped_trams:
 crossings_df = pd.DataFrame(crossings, columns=['Angle', 'BicycleID', 'TrackID', 'WorldX', 'WorldY'])
 crossings_df.to_excel('crossings_data.xlsx', index=False)
 
+
+
+
+
 # Plotting
 fig, ax = plt.subplots()
 
@@ -434,6 +456,54 @@ ax.invert_yaxis()  # This will reverse the y-axis for visualisation (an artifact
 plt.savefig('Sceneplot_WorldCoords.png', dpi=300)  # Save with a resolution of 300 dpi
 
 
+
 cap.release()
 out.release()  # Release the VideoWriter
+cv2.destroyAllWindows()
+
+
+from scipy.ndimage import gaussian_filter
+import math
+
+# Model parameters
+B_ALPHA = -5.317
+B_BETA = 0.405
+
+def logistic_regression_model(Angle):
+    prob = math.exp(B_ALPHA + B_BETA * Angle) / (1 + math.exp(B_ALPHA + B_BETA * Angle))
+    return prob
+
+# Open video file again
+cap = cv2.VideoCapture(video_path)
+
+ret, frame = cap.read()
+
+heatmap_data = np.zeros((frame.shape[0], frame.shape[1]))
+
+for _, row in crossings_df.iterrows():
+    # Convert world coordinates to pixel coordinates
+    pixel_x, pixel_y = camera_calib.world_to_pixel(row['WorldX'], row['WorldY'])
+    
+    # Calculate riskiness based on the logistic regression model
+    angle = row['Angle']
+    riskiness = logistic_regression_model(angle)
+    
+    # Increment heatmap data at this pixel position based on the riskiness
+    heatmap_data[int(pixel_y), int(pixel_x)] += riskiness
+
+# Apply Gaussian filter to spread out the angles over a larger area
+heatmap_data = gaussian_filter(heatmap_data, sigma=10)  
+
+# Normalize the heatmap data for visualization
+heatmap_data = (heatmap_data - np.min(heatmap_data)) / (np.max(heatmap_data) - np.min(heatmap_data))
+
+# Display the heatmap on top of a frame
+colored_frame = cv2.applyColorMap(np.uint8(255 * heatmap_data), cv2.COLORMAP_JET)
+blended_frame = cv2.addWeighted(frame, 0.7, colored_frame, 0.3, 0)
+
+# Save the blended frame as an image
+cv2.imwrite('blended_heatmap.png', blended_frame)
+
+cv2.imshow('Heatmap', blended_frame)
+cv2.waitKey(0)
 cv2.destroyAllWindows()
