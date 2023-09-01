@@ -56,5 +56,5 @@ _Short term:_
 11. add filtering and polynomial fitting functionalities
 12. add option to change framerate
 13. make How-to video demonstrating functionality and features
-14. add YOLO retraining tool/pipeline involving 1) sampling images from a the input video, 2) bounding box annotation, and 3) retraining online
+14. add YOLO retraining tool/pipeline involving 1) sampling images from an input video, 2) bounding box annotation, and 3) retraining online
 
