@@ -1,7 +1,7 @@
 ## SafeCross Pipeline
 
 <div align="center">
-    <img src="./images/SafeCross pipeline.png" width="1000" />
+    <img src="./images/SafeCross pipeline new.png" width="1000" />
 </div>
 
 
