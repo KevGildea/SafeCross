@@ -71,7 +71,8 @@ _short term:_
 3. read in tram track annotations ✔
 4. plot world coordinate system and tram tracks on the images ✔
 5. incorporate risk models for plotting heat map ✔
+6. make How-to video demonstrating functionality and features
 
 _Long term:_
-1. Try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
+1. try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
 
