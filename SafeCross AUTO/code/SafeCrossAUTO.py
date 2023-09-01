@@ -104,6 +104,11 @@ fps = int(cap.get(cv2.CAP_PROP_FPS))
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter('output.avi', fourcc, fps, (frame_width, frame_height))
 
+out2 = cv2.VideoWriter('overhead_view.avi', fourcc, 20.0, (500, 500))
+
+
+
+
 # List of road users to track
 road_users = ['bicycle']  #, 'car', 'motorcycle', 'bus', 'truck', 'person'
 
@@ -201,6 +206,51 @@ class CameraCalibration:
 camera_calib = CameraCalibration()
 
 
+def draw_overhead_view(world_coordinates_list, df):
+    width, height = 500, 500  # dimensions of the overhead view
+    overhead = np.ones((height, width, 3), dtype=np.uint8) * 255  # Initialize to white background
+    
+    # Extract min and max values for world coordinates from tram track DataFrame
+    min_world_x = df['WorldX'].min()
+    max_world_x = df['WorldX'].max()
+    min_world_y = df['WorldY'].min()
+    max_world_y = df['WorldY'].max()
+
+    # Calculate potential scaling factors
+    x_scale_potential = width / (max_world_x - min_world_x)
+    y_scale_potential = height / (max_world_y - min_world_y)
+    
+    # Use the smaller scale to keep aspect ratio
+    scale = min(x_scale_potential, y_scale_potential)
+
+    # Calculate the offsets to center the objects
+    x_offset = int((width - (max_world_x - min_world_x) * scale) / 2)
+    y_offset = int((height - (max_world_y - min_world_y) * scale) / 2)
+    
+    # Translate, scale, and center tram tracks
+    grouped = df.groupby('TramTrackID')
+    for _, group in grouped:
+        sorted_group = group.sort_values(by='TramTrackID')
+        coords = sorted_group[['WorldX', 'WorldY']].values
+        for i in range(1, len(coords)):
+            start = (int((coords[i-1][0] - min_world_x) * scale) + x_offset, int((coords[i-1][1] - min_world_y) * scale) + y_offset)
+            end = (int((coords[i][0] - min_world_x) * scale) + x_offset, int((coords[i][1] - min_world_y) * scale) + y_offset)
+            cv2.line(overhead, start, end, (0, 128, 0), 2)  # Draw a green line
+            
+    # Translate, scale, and center road users
+    for item in world_coordinates_list:
+        label, frame, pixel_x, pixel_y, id, world_x, world_y = item
+        scaled_x = int((world_x - min_world_x) * scale) + x_offset
+        scaled_y = int((world_y - min_world_y) * scale) + y_offset
+        color = (0,0,0) if label == 'Bicycle' else (255, 0, 0)
+        cv2.circle(overhead, (scaled_x, scaled_y), 1, color, -1)
+        #cv2.putText(overhead, f"{id}", (scaled_x, scaled_y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
+    
+    return overhead
+
+
+
+trackers = []
 
 while cap.isOpened():
     try:
@@ -221,8 +271,8 @@ while cap.isOpened():
         for d in road_user_detections:
             box = d[:4].cpu().numpy()
             confidence = d[4].item()  # Extract confidence value
-            cv2.rectangle(frame, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), (0, 0, 255), 2)
-            cv2.putText(frame, f"Conf: {confidence:.2f}", (int(box[0]), int(box[1]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)  # Display confidence
+            cv2.rectangle(frame, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), (0, 0, 255), 1)
+            cv2.putText(frame, f"Conf: {confidence:.2f}", (int(box[0]), int(box[1]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)  # Display confidence
 
         # Convert road_user_boxes to a numpy array and update the tracker
         if road_user_boxes:  # Check if there are any detections
@@ -231,8 +281,8 @@ while cap.isOpened():
 
             # Draw tracked road users on the frame in green
             for track in trackers:
-                cv2.rectangle(frame, (int(track[0]), int(track[1])), (int(track[2]), int(track[3])), (0, 255, 0), 2)
-                cv2.putText(frame, f"ID: {int(track[4])}", (int(track[0]), int(track[1]) - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                cv2.rectangle(frame, (int(track[0]), int(track[1])), (int(track[2]), int(track[3])), (0, 255, 0), 1)
+                cv2.putText(frame, f"ID: {int(track[4])}", (int(track[0]), int(track[1]) - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
 
         # Plot tram tracks
@@ -298,11 +348,41 @@ while cap.isOpened():
             for center in centers:
                 cv2.circle(frame, center, 1, (255, 255, 255), -1)  # Draw a small white dot
 
+
+        # Plot the origin of the world coordinate system
+        origin_x, origin_y = camera_calib.world_to_pixel(0, 0)
+        cv2.circle(frame, (int(origin_x), int(origin_y)), 2, (255, 255, 255), -1)
+        cv2.putText(frame, "Origin", (int(origin_x), int(origin_y) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+
+        # Plot X, Y, Z axes
+        x_end_x, x_end_y = camera_calib.world_to_pixel(1, 0)
+        y_end_x, y_end_y = camera_calib.world_to_pixel(0, 1)
+        
+        cv2.arrowedLine(frame, (int(origin_x), int(origin_y)), (int(x_end_x), int(x_end_y)), (0, 0, 255), 1, tipLength=0.2)  # X-axis in red
+        cv2.arrowedLine(frame, (int(origin_x), int(origin_y)), (int(y_end_x), int(y_end_y)), (0, 255, 0), 1, tipLength=0.2)  # Y-axis in green
+
         # Write the frame to the output video
-        out.write(frame)
+        #out.write(frame)
 
         # Display the frame
-        cv2.imshow('Tracked cyclists', frame)
+        #cv2.imshow('Tracked cyclists', frame)
+        #if cv2.waitKey(1) & 0xFF == ord('q'):
+        #    break
+
+        # Write the original frame to the first output video
+        out.write(frame)
+
+        # Create the overhead view
+        overhead = draw_overhead_view(world_coordinates_list, df)
+
+        # Write the overhead frame to the second output video
+        out2.write(overhead)
+
+        # Display the frames
+        cv2.imshow('Bicycle tracking using YOLOv5x & SORT', frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+        cv2.imshow('Overhead view (Digital Twin)', overhead)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
