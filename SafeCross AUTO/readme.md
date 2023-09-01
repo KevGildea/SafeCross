@@ -25,7 +25,7 @@
 
 
 <div align="center">
-<img src="../SafeCross AUTO/example output/287ALL/heatmap.png" width="500" />
+<img src="../SafeCross AUTO/example output/287ALL/heatmap.png" width="300" />
 </div>
 
 
