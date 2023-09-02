@@ -382,7 +382,7 @@ while cap.isOpened():
         cv2.imshow('Bicycle tracking using YOLOv5x & SORT', frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-        cv2.imshow('Overhead view (Digital Twin)', overhead)
+        cv2.imshow('Overhead view', overhead)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
@@ -542,15 +542,73 @@ out.release()  # Release the VideoWriter
 cv2.destroyAllWindows()
 
 
+
 from scipy.ndimage import gaussian_filter
 import math
+
 
 # Model parameters
 B_ALPHA = -5.317
 B_BETA = 0.405
 
 def logistic_regression_model(Angle):
-    prob = math.exp(B_ALPHA + B_BETA * Angle) / (1 + math.exp(B_ALPHA + B_BETA * Angle))
+    prob = 1 - math.exp(B_ALPHA + B_BETA * Angle) / (1 + math.exp(B_ALPHA + B_BETA * Angle))
+    return prob
+
+# Open video file again
+cap = cv2.VideoCapture(video_path)
+
+ret, frame = cap.read()
+
+heatmap_data = np.zeros((frame.shape[0], frame.shape[1]))
+crossing_counter = np.zeros((frame.shape[0], frame.shape[1]))
+
+# Define neighborhood size (change this as needed)
+neighborhood_size = 20
+half_size = neighborhood_size // 2
+
+# First pass to populate crossing_counter
+for _, row in crossings_df.iterrows():
+    pixel_x, pixel_y = camera_calib.world_to_pixel(row['WorldX'], row['WorldY']) 
+    for dx in range(-half_size, half_size + 1):
+        for dy in range(-half_size, half_size + 1):
+            new_x = int(pixel_x + dx)
+            new_y = int(pixel_y + dy)
+            if 0 <= new_x < crossing_counter.shape[1] and 0 <= new_y < crossing_counter.shape[0]:
+                crossing_counter[new_y, new_x] += 1
+
+# Second pass to populate heatmap_data based on crossing_counter
+for _, row in crossings_df.iterrows():
+    pixel_x, pixel_y = camera_calib.world_to_pixel(row['WorldX'], row['WorldY'])  
+    angle = row['Angle']
+    riskiness = logistic_regression_model(angle)
+    for dx in range(-half_size, half_size + 1):
+        for dy in range(-half_size, half_size + 1):
+            new_x = int(pixel_x + dx)
+            new_y = int(pixel_y + dy)
+            if 0 <= new_x < heatmap_data.shape[1] and 0 <= new_y < heatmap_data.shape[0]:
+                if crossing_counter[new_y, new_x] > 2:  # Change the threshold as needed
+                    heatmap_data[new_y, new_x] += riskiness
+
+# Apply Gaussian filter and normalize
+heatmap_data = gaussian_filter(heatmap_data, sigma=10)
+heatmap_data = (heatmap_data - np.min(heatmap_data)) / (np.max(heatmap_data) - np.min(heatmap_data))
+
+# Display the heatmap
+colored_frame = cv2.applyColorMap(np.uint8(255 * heatmap_data), cv2.COLORMAP_JET)
+blended_frame = cv2.addWeighted(frame, 0.7, colored_frame, 0.3, 0)
+cv2.imwrite('blended_heatmap.png', blended_frame)
+cv2.imshow('Heatmap', blended_frame)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+""" # Model parameters
+B_ALPHA = -5.317
+B_BETA = 0.405
+
+def logistic_regression_model(Angle):
+    prob = 1 - math.exp(B_ALPHA + B_BETA * Angle) / (1 + math.exp(B_ALPHA + B_BETA * Angle))
     return prob
 
 # Open video file again
@@ -560,6 +618,10 @@ ret, frame = cap.read()
 
 heatmap_data = np.zeros((frame.shape[0], frame.shape[1]))
 
+# Define neighborhood size (change this as needed)
+neighborhood_size = 20
+half_size = neighborhood_size // 2
+
 for _, row in crossings_df.iterrows():
     # Convert world coordinates to pixel coordinates
     pixel_x, pixel_y = camera_calib.world_to_pixel(row['WorldX'], row['WorldY'])
@@ -567,9 +629,14 @@ for _, row in crossings_df.iterrows():
     # Calculate riskiness based on the logistic regression model
     angle = row['Angle']
     riskiness = logistic_regression_model(angle)
-    
-    # Increment heatmap data at this pixel position based on the riskiness
-    heatmap_data[int(pixel_y), int(pixel_x)] += riskiness
+
+    # Increment heatmap data in a neighborhood around this pixel position
+    for dx in range(-half_size, half_size + 1):
+        for dy in range(-half_size, half_size + 1):
+            new_x = int(pixel_x + dx)
+            new_y = int(pixel_y + dy)
+            if 0 <= new_x < heatmap_data.shape[1] and 0 <= new_y < heatmap_data.shape[0]:
+                heatmap_data[new_y, new_x] += riskiness
 
 # Apply Gaussian filter to spread out the angles over a larger area
 heatmap_data = gaussian_filter(heatmap_data, sigma=10)  
@@ -586,4 +653,4 @@ cv2.imwrite('blended_heatmap.png', blended_frame)
 
 cv2.imshow('Heatmap', blended_frame)
 cv2.waitKey(0)
-cv2.destroyAllWindows()
+cv2.destroyAllWindows() """
