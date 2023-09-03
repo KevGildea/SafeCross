@@ -2,7 +2,7 @@ import torch
 import cv2
 from sort.sort import Sort
 import tkinter as tk
-from tkinter import filedialog, simpledialog  # Import simpledialog
+from tkinter import filedialog, simpledialog
 import numpy as np
 import pandas as pd
 from scipy.signal import savgol_filter
