@@ -5,7 +5,7 @@
 
 
 <div align="center">
-<img src="../SafeCross AUTO/example/example data/output/output.gif" width="300" />
+<img src="../SafeCross AUTO/example data/output/output.gif" width="300" />
 </div>
 
 
