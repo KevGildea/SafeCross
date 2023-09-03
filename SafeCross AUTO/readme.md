@@ -25,7 +25,7 @@
 
 
 <div align="center">
-<img src="../SafeCross AUTO/example data/Dublin/output/blended_heatmap.png" width="300" />
+<img src="../SafeCross AUTO/example data/Dublin/output/example_blended_heatmap.png" width="300" />
 </div>
 
 
