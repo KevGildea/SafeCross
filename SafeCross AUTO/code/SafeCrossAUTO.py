@@ -7,6 +7,9 @@ import numpy as np
 import pandas as pd
 from scipy.signal import savgol_filter
 
+
+
+
 # Prompt user to select video file
 root = tk.Tk()
 root.title("SafeCross AUTO")
@@ -30,6 +33,7 @@ root.withdraw()  # Hide the main window
 
 # Create menu bar
 menu_bar = tk.Menu(root)
+
 
 # Create 'Help' menu
 help_menu = tk.Menu(menu_bar, tearoff=0)
@@ -86,7 +90,7 @@ if tracking_point not in tracking_point_options:
     tracking_point = "bottom-centre"
 
 # Initialize SORT tracker
-tracker = Sort()
+tracker = Sort(max_age=15, min_hits=2, iou_threshold=0.3)
 
 # Dictionary to store historical centers for each bicycle
 historical_centers = {}
@@ -654,3 +658,5 @@ cv2.imwrite('blended_heatmap.png', blended_frame)
 cv2.imshow('Heatmap', blended_frame)
 cv2.waitKey(0)
 cv2.destroyAllWindows() """
+
+
