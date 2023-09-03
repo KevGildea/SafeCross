@@ -34,14 +34,14 @@
 
 ```plaintext
 .
-├── src
+├── SafeCross AUTO
 │   ├── SafeCross AUTO.exe
 │   └── yolov5
 │       ├── .github
 │       └── classify
 │       ...
 ├── data
-│   ├── tram_tracks.xlsx
+│   ├── tram_tracks.xlsx (obtained using SafeCross TA)
 │   ├── example.mp4
 │   └── example.tacal
 ├── model
