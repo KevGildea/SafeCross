@@ -416,7 +416,7 @@ def angle_between(v1, v2):
 
 # Load the data
 annotations = pd.read_excel('annotations.xlsx')
-tram_tracks = pd.read_excel('tram_tracks.xlsx')
+tram_tracks = pd.read_excel(tram_tracks_path)
 
 # Group by BicycleID and Time
 grouped_bikes = annotations.groupby(['BicycleID', 'Time'])
