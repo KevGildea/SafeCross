@@ -15,7 +15,7 @@
 
 
 <div align="center">
-<img src="../SafeCross AUTO/example output/287ALL/Sceneplot_WorldCoords.png" width="500" />
+<img src="../SafeCross AUTO/example data/Dublin/output/Sceneplot_WorldCoords.png" width="500" />
 </div>
 
 
@@ -25,7 +25,7 @@
 
 
 <div align="center">
-<img src="../SafeCross AUTO/example output/287ALL/heatmap.png" width="300" />
+<img src="../SafeCross AUTO/example data/Dublin/output/blended_heatmap.png" width="300" />
 </div>
 
 
