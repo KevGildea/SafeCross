@@ -55,7 +55,7 @@ _Short term:_
 10. plot y axis from negative to positive ✔
 11. add filtering and polynomial fitting functionalities
 12. add option to change framerate
-13. make How-to video demonstrating functionality and features
+13. make a how-to video demonstrating functionality and features
 14. update manuals
 15. add YOLO retraining tool/pipeline involving 1) sampling images from an input video, 2) bounding box annotation, and 3) retraining online
 
