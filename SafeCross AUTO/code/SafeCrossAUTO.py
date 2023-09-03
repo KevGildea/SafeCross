@@ -108,7 +108,7 @@ fps = int(cap.get(cv2.CAP_PROP_FPS))
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter('output.avi', fourcc, fps, (frame_width, frame_height))
 
-out2 = cv2.VideoWriter('overhead_view.avi', fourcc, 20.0, (500, 500))
+out2 = cv2.VideoWriter('overhead_view.avi', fourcc, fps, (500, 500))
 
 
 
@@ -437,14 +437,14 @@ grouped_trams = tram_tracks.groupby('TramTrackID')
 
 
 # Prompt user to specify the window length for Savitzky-Golay filter
-window_length = simpledialog.askinteger("Savitzky-Golay filter", "Specify window length (must be an odd number):", initialvalue=31)
+window_length = simpledialog.askinteger("1st order Savitzky-Golay filter", "Specify window length (must be an odd number):", initialvalue=31)
 if window_length is None or window_length % 2 == 0:  # Ensure it's an odd number
     print("Invalid window length specified. Using default value of 31.")
     window_length = 31
 
 
 # Apply Savitzky-Golay filter to the bicycle trajectories
-polynomial_order = 2  
+polynomial_order = 1  
 
 # Create a list to store indices of rows to be dropped
 drop_indices = []
