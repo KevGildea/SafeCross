@@ -15,7 +15,7 @@
 
 
 <div align="center">
-<img src="../SafeCross AUTO/example data/Dublin/output/Sceneplot_WorldCoords.png" width="500" />
+<img src="../SafeCross AUTO/example data/Dublin/output/example_Sceneplot_WorldCoords.png" width="500" />
 </div>
 
 
