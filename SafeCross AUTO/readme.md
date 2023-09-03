@@ -49,7 +49,7 @@
 ```
 
 ### Downloads
-The standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1qXHpjRBBF1TyzJrOKNePbu2Gs0for7ED/view?usp=sharing), `yolov5` is the GitHub repository available [here](https://github.com/ultralytics/yolov5/), and `yolov5x.pt` (retrained on Dublin data) can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1QWWPHsp7amwtncWRP3atRaDncN9ohmbK/view?usp=sharing).
+The standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1-C9Bp01p_gQeIWE7BU8AWZllmVZFPQgU/view?usp=sharing), `yolov5` is the GitHub repository available [here](https://github.com/ultralytics/yolov5/), and `yolov5x.pt` (retrained on Dublin data) can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1QWWPHsp7amwtncWRP3atRaDncN9ohmbK/view?usp=sharing).
 
 
 ### File Formats
