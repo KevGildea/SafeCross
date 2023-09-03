@@ -71,7 +71,7 @@ _short term:_
 3. read in tram track annotations ✔
 4. plot world coordinate system and tram tracks on the images ✔
 5. incorporate risk models for plotting heat map ✔
-6. make How-to video demonstrating functionality and features
+6. make a how-to video demonstrating functionality and features
 7. update manuals
 
 _Long term:_
