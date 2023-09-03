@@ -255,6 +255,7 @@ def draw_overhead_view(world_coordinates_list, df):
 
 
 trackers = []
+missing_frames_count = {} # Keep track of how many frames each cyclist ID has been missing for - just for plotting purposes
 
 while cap.isOpened():
     try:
@@ -271,22 +272,6 @@ while cap.isOpened():
         # Extract bounding boxes for road users
         road_user_boxes = [d[:4].cpu().numpy() for d in road_user_detections]
 
-        # Draw raw YOLO detections in red
-        for d in road_user_detections:
-            box = d[:4].cpu().numpy()
-            confidence = d[4].item()  # Extract confidence value
-            cv2.rectangle(frame, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), (0, 0, 255), 1)
-            cv2.putText(frame, f"Conf: {confidence:.2f}", (int(box[0]), int(box[1]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)  # Display confidence
-
-        # Convert road_user_boxes to a numpy array and update the tracker
-        if road_user_boxes:  # Check if there are any detections
-            road_user_boxes_np = np.array(road_user_boxes)
-            trackers = tracker.update(road_user_boxes_np)
-
-            # Draw tracked road users on the frame in green
-            for track in trackers:
-                cv2.rectangle(frame, (int(track[0]), int(track[1])), (int(track[2]), int(track[3])), (0, 255, 0), 1)
-                cv2.putText(frame, f"ID: {int(track[4])}", (int(track[0]), int(track[1]) - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
 
         # Plot tram tracks
@@ -348,9 +333,33 @@ while cap.isOpened():
             world_coordinates_list.append(["Bicycle", frame_number, center_x, center_y, int(track[4]), world_x[0], world_y[0]])
 
         # Plot historical centers for each tracked bicycle
+        # for track_id, centers in historical_centers.items():
+        #     for center in centers[-50:]:
+        #         cv2.circle(frame, center, 1, (255, 255, 255), -1)  # Draw a small white dot
+
+        # Reset missing frame counts for currently detected IDs and update tracking info
+        detected_ids = set([int(track[4]) for track in trackers])
+        for detected_id in detected_ids:
+            missing_frames_count[detected_id] = 0  # Reset count for detected IDs
+            # ... (code to calculate center_x, center_y, etc.)
+
+        # Increment missing frame counts for all IDs and remove those missing for too long
+        ids_to_remove = []
+        for track_id in missing_frames_count:
+            if track_id not in detected_ids:
+                missing_frames_count[track_id] += 1
+            if missing_frames_count[track_id] > 15:
+                ids_to_remove.append(track_id)
+                del historical_centers[track_id]  # Remove historical data for this ID
+
+        for track_id in ids_to_remove:
+            del missing_frames_count[track_id]  # Remove counter for this ID
+
+        # Plot previous 50 historical centers per cyclist
         for track_id, centers in historical_centers.items():
-            for center in centers:
-                cv2.circle(frame, center, 1, (255, 255, 255), -1)  # Draw a small white dot
+            for center in centers[-50:]:
+                cv2.circle(frame, center, 1, (255, 255, 255), -1)
+
 
 
         # Plot the origin of the world coordinate system
@@ -364,6 +373,26 @@ while cap.isOpened():
         
         cv2.arrowedLine(frame, (int(origin_x), int(origin_y)), (int(x_end_x), int(x_end_y)), (0, 0, 255), 1, tipLength=0.2)  # X-axis in red
         cv2.arrowedLine(frame, (int(origin_x), int(origin_y)), (int(y_end_x), int(y_end_y)), (0, 255, 0), 1, tipLength=0.2)  # Y-axis in green
+
+
+        # Draw raw YOLO detections in red
+        for d in road_user_detections:
+            box = d[:4].cpu().numpy()
+            confidence = d[4].item()  # Extract confidence value
+            cv2.rectangle(frame, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), (0, 0, 255), 1)
+            cv2.putText(frame, f"Conf: {confidence:.2f}", (int(box[0]), int(box[1]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)  # Display confidence
+
+        # Convert road_user_boxes to a numpy array and update the tracker
+        if road_user_boxes:  # Check if there are any detections
+            road_user_boxes_np = np.array(road_user_boxes)
+            trackers = tracker.update(road_user_boxes_np)
+
+            # Draw tracked road users on the frame in green
+            for track in trackers:
+                cv2.rectangle(frame, (int(track[0]), int(track[1])), (int(track[2]), int(track[3])), (255, 0, 0), 1)
+                cv2.putText(frame, f"ID: {int(track[4])}", (int(track[0]), int(track[1]) - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1)
+
+
 
         # Write the frame to the output video
         #out.write(frame)
