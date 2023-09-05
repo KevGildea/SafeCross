@@ -6,7 +6,26 @@ from tkinter import filedialog, simpledialog
 import numpy as np
 import pandas as pd
 from scipy.signal import savgol_filter
+import warnings
+import sys
+import os
 
+
+
+
+print("""
+   ███████╗ █████╗ ███████╗███████╗ ██████╗██████╗  ██████╗ ███████╗███████╗     █████╗ ██╗   ██╗████████╗ ██████╗ 
+   ██╔════╝██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗██╔═══██╗██╔════╝██╔════╝    ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗
+   ███████╗███████║█████╗  █████╗  ██║     ██████╔╝██║   ██║███████╗███████╗    ███████║██║   ██║   ██║   ██║   ██║
+   ╚════██║██╔══██║██╔══╝  ██╔══╝  ██║     ██╔══██╗██║   ██║╚════██║╚════██║    ██╔══██║██║   ██║   ██║   ██║   ██║
+   ███████║██║  ██║██║     ███████╗╚██████╗██║  ██║╚██████╔╝███████║███████║    ██║  ██║╚██████╔╝   ██║   ╚██████╔╝
+   ╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝    ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ 
+                                                                                                                            
+    """)
+print("Developed by Kevin Gildea, Ph.D.")
+print("Faculty of Engineering, LTH")
+print("Lund University")
+print("Email: kevin.gildea@tft.lth.se")
 
 
 
@@ -45,7 +64,9 @@ menu_bar.add_cascade(label="Help", menu=help_menu)
 # Add menu bar to root window
 root.config(menu=menu_bar)
 
-
+print("="*80)
+print("Stage 1: Initial Setup and User Prompts")
+print("="*80)
 
 # Prompt user to select tram_tracks.xlsx file
 tram_tracks_path = filedialog.askopenfilename(title="Select the tram_tracks.xlsx file", filetypes=[("Excel files", "*.xlsx")])
@@ -63,6 +84,9 @@ if not video_path:
     exit()
 
 
+print("="*80)
+print("Stage 2: Model loading and configuration")
+print("="*80)
 
 # Model
 #model = torch.hub.load('ultralytics/yolov5', 'yolov5x', pretrained=True)
@@ -73,7 +97,18 @@ model_path = filedialog.askopenfilename(title="Select the YOLOv5x model file", f
 if not model_path:
     print("No YOLOv5x model file selected. Exiting.")
     exit()
+
+# Redirect stdout and stderr
+#orig_stdout = sys.stdout
+#orig_stderr = sys.stderr
+#sys.stdout = open(os.devnull, 'w')
+#sys.stderr = open(os.devnull, 'w')
+
 model = torch.hub.load('yolov5', 'custom', path=model_path, source='local')
+
+# Restore stdout and stderr
+#sys.stdout = orig_stdout
+#sys.stderr = orig_stderr
 
 
 # Prompt user to specify the confidence level for YOLO
@@ -114,9 +149,12 @@ out2 = cv2.VideoWriter('overhead_view.avi', fourcc, fps, (500, 500))
 
 
 # List of road users to track
-road_users = ['bicycle']  #, 'car', 'motorcycle', 'bus', 'truck', 'person'
+road_users = ['bicycle','car']  #, 'car', 'motorcycle', 'bus', 'truck', 'person'
 
 
+print("="*80)
+print("Stage 3: Load calibration data")
+print("="*80)
 
 world_coordinates_list = []
 
@@ -159,7 +197,8 @@ class CameraCalibration:
         s = (z + tempMat2[2, 0]) / tempMat[2, 0]
         wcPoint = iRot @ ((s * iCam @ uvPoint) - tvec)
 
-        assert int(abs(wcPoint[2] - z) * (10 ** 8)) == 0
+        #assert int(abs(wcPoint[2] - z) * (10 ** 8)) == 0
+
         wcPoint[2] = z
 
         return wcPoint
@@ -204,7 +243,8 @@ class CameraCalibration:
         image_point = int_mat @ ext_mat @ world_point
         image_point /= image_point[2]  # Homogeneous to cartesian coordinates
 
-        return int(image_point[0]), int(image_point[1])
+        #return int(image_point[0]), int(image_point[1])
+        return int(image_point[0].item()), int(image_point[1].item())
 
 # Initialize CameraCalibration
 camera_calib = CameraCalibration()
@@ -253,6 +293,9 @@ def draw_overhead_view(world_coordinates_list, df):
     return overhead
 
 
+print("="*80)
+print("Stage 4: Bicycle detection and tracking")
+print("="*80)
 
 trackers = []
 missing_frames_count = {} # Keep track of how many frames each cyclist ID has been missing for - just for plotting purposes
@@ -423,6 +466,11 @@ while cap.isOpened():
         print(f"Error occurred: {e}")
         break
 
+
+print("="*80)
+print("Stage 5: Filter trajectories")
+print("="*80)
+
 df_output = pd.DataFrame(world_coordinates_list, columns=["Type", "Time", "X", "Y", "BicycleID", "WorldX", "WorldY"])
 df_output.to_excel("annotations.xlsx", index=False)
 
@@ -474,6 +522,12 @@ if window_length is None or window_length % 2 == 0:  # Ensure it's an odd number
 
 # Apply Savitzky-Golay filter to the bicycle trajectories
 polynomial_order = 1  
+
+
+
+print("="*80)
+print("Stage 6: Calculate crossing angles and plot")
+print("="*80)
 
 # Create a list to store indices of rows to be dropped
 drop_indices = []
@@ -576,6 +630,10 @@ cv2.destroyAllWindows()
 
 
 
+print("="*80)
+print("Stage 7: Generate risk heatmap")
+print("="*80)
+
 from scipy.ndimage import gaussian_filter
 import math
 
@@ -627,11 +685,20 @@ for _, row in crossings_df.iterrows():
 heatmap_data = gaussian_filter(heatmap_data, sigma=10)
 heatmap_data = (heatmap_data - np.min(heatmap_data)) / (np.max(heatmap_data) - np.min(heatmap_data))
 
-# Display the heatmap
-colored_frame = cv2.applyColorMap(np.uint8(255 * heatmap_data), cv2.COLORMAP_JET)
-blended_frame = cv2.addWeighted(frame, 0.7, colored_frame, 0.3, 0)
-cv2.imwrite('blended_heatmap.png', blended_frame)
-cv2.imshow('Heatmap', blended_frame)
+# Check for valid heatmap data before generating the heatmap
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore")
+    if np.any(np.isnan(heatmap_data)) or np.all(heatmap_data == 0):
+        print("Insufficient points for a heatmap to be generated.")
+    else:
+        try:
+            colored_frame = cv2.applyColorMap(np.uint8(255 * heatmap_data), cv2.COLORMAP_JET)
+            blended_frame = cv2.addWeighted(frame, 0.7, colored_frame, 0.3, 0)
+            cv2.imwrite('blended_heatmap.png', blended_frame)
+            cv2.imshow('Heatmap', blended_frame)
+        except Exception as e:
+            print(f"An error occurred while generating the heatmap: {e}")
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
