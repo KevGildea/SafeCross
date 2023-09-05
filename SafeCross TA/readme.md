@@ -58,4 +58,4 @@ _Short term:_
 13. make a how-to video demonstrating functionality and features
 14. update manuals
 15. add YOLO retraining tool/pipeline involving 1) sampling images from an input video, 2) bounding box annotation, and 3) retraining online
-16. add option for homography transformation (generation of camera parameters) using only the knowledge of the tram track gauge, e.g., [Ismail et al. (2013)](https://cdnsciencepub.com/doi/10.1139/cjce-2011-0456).
+16. add option for homography transformation (generation of camera parameters) using only the knowledge of the tram track gauge, e.g., [Ismail et al. (2013)](https://cdnsciencepub.com/doi/10.1139/cjce-2011-0456), or create a calibration tool that combines [Tsai (1987)](https://people.csail.mit.edu/bkph/articles/Tsai_Revisited.pdf) and [Ismail et al. (2013)](https://cdnsciencepub.com/doi/10.1139/cjce-2011-0456)
