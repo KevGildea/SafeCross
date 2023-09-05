@@ -58,4 +58,4 @@ _Short term:_
 13. make a how-to video demonstrating functionality and features
 14. update manuals
 15. add YOLO retraining tool/pipeline involving 1) sampling images from an input video, 2) bounding box annotation, and 3) retraining online
-
+16. add option for homography transformation using only the knowledge of the tram track gauge
