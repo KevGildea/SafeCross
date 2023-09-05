@@ -12,4 +12,4 @@ To create a standalone app:
 pyinstaller --add-data "your\path\SafeCrossAUTOvenv\Lib\site-packages\ultralytics\cfg\default.yaml;ultralytics/cfg/" --hidden-import=ultralytics --hidden-import=git --hidden-import=PIL --hidden-import=yaml --onefile SafeCrossAUTO.py
 ```
 
-[test](https://drive.google.com/file/d/12KIOzM5GUcvQv9erIQcXPCmKm7LO0QnP/view?usp=sharing)https://drive.google.com/file/d/12KIOzM5GUcvQv9erIQcXPCmKm7LO0QnP/view?usp=sharing
+[test](https://drive.google.com/file/d/12KIOzM5GUcvQv9erIQcXPCmKm7LO0QnP/view?usp=sharing)
