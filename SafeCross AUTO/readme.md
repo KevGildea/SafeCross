@@ -51,7 +51,7 @@
 ### Downloads
 The standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/12KIOzM5GUcvQv9erIQcXPCmKm7LO0QnP/view?usp=sharing), `yolov5` is the GitHub repository available [here](https://github.com/ultralytics/yolov5/), and `yolov5x.pt` (retrained on Dublin data) can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1gZQsXaXeRKGgOVOmG5X0W-ma7uFE3N6w/view?usp=sharing).
 
-Alternatively, a .zip file with the entire directory contents shown above can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1cNDuN8VYpIzUeFYUsi7nR_B5_3OSGtOh/view?usp=sharing).
+Alternatively, a .zip file with the entire directory contents shown above can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1y8onklZKutPQU_los4LH7xFEDsoNO_YQ/view?usp=sharing).
 
 
 ### File Formats
@@ -77,5 +77,6 @@ _short term:_
 7. update manuals
 
 _Long term:_
-1. try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
+1. try to create GPU version
+2. try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking
 
