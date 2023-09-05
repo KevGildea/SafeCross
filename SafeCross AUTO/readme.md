@@ -51,6 +51,8 @@
 ### Downloads
 The standalone application can be downloaded from this Google Drive [link](https://drive.google.com/file/d/13A2jBdvMSY4qTN-W0aTdhEeRETT5R3xA/view?usp=sharing), `yolov5` is the GitHub repository available [here](https://github.com/ultralytics/yolov5/), and `yolov5x.pt` (retrained on Dublin data) can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1gZQsXaXeRKGgOVOmG5X0W-ma7uFE3N6w/view?usp=sharing).
 
+Alternatively, a .zip file with the entire directory contents shown above can be downloaded from this Google Drive [link](https://drive.google.com/file/d/1cNDuN8VYpIzUeFYUsi7nR_B5_3OSGtOh/view?usp=sharing).
+
 
 ### File Formats
 - **Excel files (.xlsx)**: For reading tram track data and writing annotations.
