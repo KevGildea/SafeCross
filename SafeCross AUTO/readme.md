@@ -75,6 +75,7 @@ _short term:_
 5. incorporate risk models for plotting heat map ✔
 6. make a how-to video demonstrating functionality and features
 7. update manuals
+8. include smaller models, and compare 
 
 _Long term:_
 1. try to create GPU version
