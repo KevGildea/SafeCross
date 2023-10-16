@@ -15,13 +15,16 @@ If you use any part of this repository in your research or work, **please be sur
 ```bibtex
 @article{Gildea2023,
    author = {Kevin Gildea and Daniel Hall and Clara Mercadal-Baudart and Brian Caulfield and Ciaran Simms},
+   doi = {10.1016/J.JSR.2023.09.017},
+   issn = {0022-4375},
    journal = {Journal of Safety Research},
-   title = {Computer vision-based assessment of cyclist-tram track interactions for predictive modelling of crossing success},
-   note = {In Press},
+   month = {10},
+   publisher = {Pergamon},
+   title = {Computer vision-based assessment of cyclist-tram track interactions for predictive modeling of crossing success},
+   url = {https://linkinghub.elsevier.com/retrieve/pii/S0022437523001482},
    year = {2023},
-   url = {https://github.com/KevGildea/SafeCross/},
-   howpublished = {\url{https://github.com/KevGildea/SafeCross/}}
 }
+
 ```
 
 ## Acknowledgments
