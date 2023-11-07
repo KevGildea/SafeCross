@@ -323,7 +323,7 @@ while cap.isOpened():
 
         for _, group in grouped:
             # Sort the group if necessary (e.g., by index)
-            sorted_group = group.sort_values(by='TramTrackID')  # Replace 'index' with the appropriate column if needed
+            sorted_group = group.sort_values(by='TramTrackID')
             
             # Extract the coordinates
             coords = sorted_group[['X', 'Y']].values
@@ -384,7 +384,6 @@ while cap.isOpened():
         detected_ids = set([int(track[4]) for track in trackers])
         for detected_id in detected_ids:
             missing_frames_count[detected_id] = 0  # Reset count for detected IDs
-            # ... (code to calculate center_x, center_y, etc.)
 
         # Increment missing frame counts for all IDs and remove those missing for too long
         ids_to_remove = []
@@ -718,7 +717,7 @@ ret, frame = cap.read()
 
 heatmap_data = np.zeros((frame.shape[0], frame.shape[1]))
 
-# Define neighborhood size (change this as needed)
+# Define neighborhood size
 neighborhood_size = 20
 half_size = neighborhood_size // 2
 
