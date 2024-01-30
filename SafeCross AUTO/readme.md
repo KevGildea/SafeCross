@@ -79,5 +79,5 @@ _short term:_
 
 _Long term:_
 1. try to create GPU version
-2. try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking, using oriented bounding boxes ([https://docs.ultralytics.com/tasks/obb/](https://docs.ultralytics.com/tasks/obb/)https://docs.ultralytics.com/tasks/obb/).
+2. try retraining YOLOv8, with discussed enhancements for bicycle/rider tracking, using oriented bounding boxes ([https://docs.ultralytics.com/tasks/obb/](https://docs.ultralytics.com/tasks/obb/)).
 
